@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 3</title>
+</head>
+<body>
+</body>
+<script>
+
+    console.log("typeof");
+    var intNum = 10;
+    var floatNum = 0.1;
+    var singleQuoteStr = 'single quote string';
+    var doubleQuoteStr = "double quote string";
+    var singleChar = 'a';
+
+    var _bool = true;
+    var _empty;
+    var _null = null;
+    console.log(
+        typeof intNum,
+        typeof floatNum,
+        typeof singleQuoteStr,
+        typeof doubleQuoteStr,
+        typeof singleChar,
+        typeof _bool,
+        typeof _empty,
+        typeof _null,
+        _null
+    );
+
+
+    console.log("string type");
+    var _str = "hello world";
+    console.log(_str); //hello world
+    _str[0] = 'a'; //it can not work!!
+    console.log(_str); //hello world
+
+
+    console.log("boolean type");
+    console.log(_bool);
+    _bool = 0;
+    console.log(typeof  _bool); //bool -> number
+    console.log(_bool);
+    _bool = !! 0;
+    console.log(typeof  _bool); //number -> bool
+    console.log(_bool);
+
+
+    console.log("function in property");
+    var person = {
+        name: 'HeongKyun',
+        age : 26,
+        ocupation : 'developer',
+        getProfile : function (_var) {
+            console.log(_var);
+            return "Name : " + this.name
+        + "\t Age : " + this.age
+        + "\t Ocupation : " + this.ocupation;
+        }
+    };
+    console.log(person.getProfile(null));
+
+
+    console.log("Object create");
+    var obj = new Object();
+    obj.name = "khk";
+    obj.age = 26;
+    console.log(obj);
+
+    var foo = {
+        name : "khk",
+        age : 26
+    };
+    console.log(foo);
+
+    console.log("Obj property access");
+    console.log(foo);
+    foo.addr = "seoul";
+    console.log(foo["addr"]);
+
+    console.log("for loop");
+    for(var prop in foo){
+        console.log(prop,foo[prop]);
+    }
+
+    console.log("Obj property delete");
+    console.log(foo);
+    delete(foo.name);
+    console.log(foo);
+    delete(foo); //can not delete object!
+    console.log(foo);
+
+
+    console.log("참조 타입의 특성");
+    var f1 = foo;
+    f1.age = 30;
+    var f2 = foo;
+    console.log(foo.age,f1.age,f2.age);
+    var _a1 = 10;
+    var _a2 = _a1;
+    _a2 = 30;
+    console.log(_a1,_a2);
+
+    console.log("객체 비교")
+    var objA = { value: 100};
+    var objB = { value: 100};
+    var objC = objB ;
+    console.log(objA == objB);
+    console.log(objB == objC);
+
+    console.log("Call by value, Call by Reference");
+    function changeArg(num, obj){
+        num = 200;
+        obj.value = 200;
+    }
+    var a = 33;
+    var objA = { value: 33};
+    console.log(a);
+    console.log(objA);
+    changeArg(a, objA);
+    console.log(a);
+    console.log(objA);
+
+    console.log("prototype");
+    console.log(foo.toString()); //object(foo) Object
+    console.dir(foo);
+
+    console.log("Array");
+    var arr=[];
+    console.log(arr); //[]
+    console.log(undefined == arr[0]); //true
+    arr[0] = 101;
+    arr[1] = 211;
+    console.log(arr); //[101,211]
+    arr[10] = 10;
+    console.log(arr);
+    arr.length = 100;
+    console.log(arr.length);
+    arr.pop();
+    console.log(arr.length);
+    arr.length = 0;
+    console.log(arr);
+
+    console.log("Array vs Object");
+    var colorsArray = ["orange" , "yellow", "green"];
+    var colorsObj = {
+        "0": "orange",
+        "1": "yellow",
+        "2": "green"
+    };
+
+    console.log(colorsArray);
+    console.log(colorsObj);
+    console.log(typeof colorsArray);
+    console.log(typeof colorsObj);
+
+    console.log(colorsArray[0]);
+    console.log(colorsObj[0]); //0 -> '0' 으로 자동변환
+
+    console.log(colorsArray.length);
+    console.log(colorsObj.length); //error
+
+    colorsArray.push("red");
+    colorsObj.push("red"); //error
+
+    console.log("property in Array");
+    colorsArray.name = "khk";
+    colorsArray.age = 26;
+
+    console.log("for in colorsArray");
+    for(var prop in colorsArray)
+        console.log(prop, colorsArray[prop]);
+    console.log("for length colorsArray");
+    for(var i=0; i< colorsArray.length; i++)
+        console.log(i, colorsArray[i]);
+
+    console.log("Array delete vs splice");
+    console.log(colorsArray);
+    delete colorsArray[0]
+    console.log(colorsArray);
+    colorsArray.splice(0,1);
+    console.log(colorsArray);
+
+</script>
+</html>
