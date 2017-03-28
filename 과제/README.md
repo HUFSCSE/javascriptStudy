@@ -12,4 +12,4 @@
 * 3주차 스터디는 **4.4 함수 호출과 this** 까지 진행할 예정입니다.(제대로 이해하고 넘어갑시다)
 * 3주차 부터는 내용이 어렵고 복잡합니다. 예습 철저히 해서 오세요.
 * 3주차 강의는 ppt가아닌 마크다운으로 정리한 내용으로 강의합니다
-* 강의자료는 매일매일 업데이트 됩니다.![이동하기](https://github.com/yiheechan/javascriptStudy/tree/master/%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/chapter4)
+* 강의자료는 매일매일 업데이트 됩니다.[이동하기](https://github.com/yiheechan/javascriptStudy/tree/master/%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/chapter4)
