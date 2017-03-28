@@ -256,7 +256,7 @@ bar();
 ```
 결과값 : return value
 ```
-## 4.2.3 함수 객체의 기본 프로퍼티
+### 4.2.3 함수 객체의 기본 프로퍼티
 함수는 객체이다
 일반객체와는 다르게 함수 객체만의 표준 프로퍼티가 정의되어 있다.
 ```javascript
@@ -265,4 +265,58 @@ function add(x, y){
 }
 console.dir(add);
 ```
-![](http://)
+결과
+![](https://raw.githubusercontent.com/yiheechan/javascriptStudy/master/%EA%B0%95%EC%9D%98%EC%9E%90%EB%A3%8C/chapter4/img/4-6.PNG)
+
+ECMA5 스크립트 명세서 : 모든 함수는 length, prototype 프로퍼티를 가져아한다.
+모든 함수의 부모 객체는 Function.prototype 객체 이다.
+* constructor 프로퍼티
+* toString() 메서드
+* apply(thisArg, argArray) 메서드
+* call(thisArg, [, arg1[,arg2,]]) 메서드
+* bind(thisArg, [, arg1[,arg2,]]) 메서드
+
+#### 4.2.3.1 length 프로퍼티
+표준 프로퍼티로서 함수거 정상적으로 실행될 때 기대되는 **인자의 개수**를 나타낸다.
+```javascript
+function func0(){
+
+}
+function func1(x){
+	return x;
+}
+function func2(x, y){
+	return x + y;
+}
+function func3(x, y, z){
+	return x + y + z;
+}
+console.log('func1.length - ' + func0.length);
+console.log('func1.length - ' + func1.length);
+console.log('func1.length - ' + func2.length);
+console.log('func1.length - ' + func3.length);
+```
+```
+func1.length - 0
+func1.length - 1
+func1.length - 2
+func1.length - 3
+```
+#### 4.2.3.2 prototype 프로퍼티
+
+모든 함수는 객체이고 **prototype 프로퍼티**를 가지고 있다.
+모든 객체의 부모를 나타내는 내부 프로퍼티인 [[Prototype]] (\_proto\_) 와는 다른것임
+
+*이게 무슨말??? 나중에설명*
+
+* 함수가 생성될 때 만들어진다.
+* constructor 프로퍼티 하나만 있는 객체를 가리킨다.
+* 함수생성될 때 함수 자신과 연결된 프로토타입 객체를 동시에 생성한다.
+
+```
+프로토타입 객체는 일반적으로 따로 네이밍하지 않는다. 자신과 연결된 함수의 prototype 프로퍼티값을 그대로 이용한다. 
+ex) add() 함수의 프로토타입 객체는 add.prototype 이다.
+```
+
+
+
