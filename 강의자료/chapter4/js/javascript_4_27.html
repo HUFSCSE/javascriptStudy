@@ -1,0 +1,27 @@
+<html><body>
+	<script>
+        /*4-26*/
+        var value = 100;
+        var myObject = {
+            value : 1,
+            func1 : function(){
+                var that = this;
+                this.value += 1;
+                console.log('func1() called. this.value : ' + this.value); //...1
+
+                func2 = function(){
+                    that.value += 1;
+                    console.log('func2() called. this.value : ' + that.value); //...2
+
+                    func3 = function(){
+                        that.value += 1;
+                        console.log('func3() called. this.value : ' + that.value); //...3
+                    }
+                    func3(); // 내부 함수 호출
+                }
+                func2(); // 내부 함수 호출
+            }
+        };
+        myObject.func1();
+</script>
+</body></html>
