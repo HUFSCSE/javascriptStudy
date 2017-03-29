@@ -1,93 +1,92 @@
+## 2주차 실습
 ```javascript
-<html>
-	<script type ="text/javascript">
-		console.log("==typeof==");
-		var intNum = 10;
-		var floatNum = 0.1;
-		var singleQuoteStr = 'single quote string';
-		var doubleQuoteStr = "double quote string";
+console.log("==typeof==");
+var intNum = 10;
+var floatNum = 0.1;
+var singleQuoteStr = 'single quote string';
+var doubleQuoteStr = "double quote string";
 
-		var boolVar = true;
-		var emptyVar;
-		var nullVar = null;
+var boolVar = true;
+var emptyVar;
+var nullVar = null;
 
-		console.log(
-			typeof intNum,
-			typeof floatNum,
-			typeof singleQuoteStr,
-			typeof doubleQuoteStr,
-			typeof boolVar,
-			typeof emptyVar,
-			typeof nullVar
-		);
-		console.log("==property==");
+console.log(
+	typeof intNum,
+	typeof floatNum,
+	typeof singleQuoteStr,
+	typeof doubleQuoteStr,
+	typeof boolVar,
+	typeof emptyVar,
+	typeof nullVar
+);
+console.log("==property==");
 
-		var person = {
-        	name: 'EUNBI',
-        	age : 27,
-        	ocupation : 'developer',
-        	getProfile : function () {
-            	return "Name : " + this.name
-         		+ "\nAge : " + this.age
-        		+ "\nOcupation : " + this.ocupation;
-        	}
-    	};
-    	console.log(person.getProfile(null));
+var person = {
+name: 'EUNBI',
+age : 27,
+ocupation : 'developer',
+getProfile : function () {
+return "Name : " + this.name
+	+ "\nAge : " + this.age
+	+ "\nOcupation : " + this.ocupation;
+}
+};
+console.log(person.getProfile(null));
 
-    	console.log("==object==");
+console.log("==object==");
 
-		var obj = new Object();
-		obj.name = "leb";
-		obj.age = 27;
-		console.log(obj);
+var obj = new Object();
+obj.name = "leb";
+obj.age = 27;
+console.log(obj);
 
-		console.log("==literal==");
-		var foo = {
-			name : "leb",
-			age : 27
-		}
-		console.log(foo);
+console.log("==literal==");
+var foo = {
+	name : "leb",
+	age : 27
+}
+console.log(foo);
 
-		console.log("==property delete==");
-		delete(foo.name);
-		console.log(foo.name);
-		delete(foo);
-		console.log(foo.age);
+console.log("==property delete==");
+delete(foo.name);
+console.log(foo.name);
+delete(foo);
+console.log(foo.age);
 
-		console.log("==객체접근==");
-		var f = {
-			name:'foo',
-			major:'computer science'
-		};
+console.log("==객체접근==");
+var f = {
+	name:'foo',
+	major:'computer science'
+};
 
-		console.log(f.name);
-		console.log(f['name']);
-		console.log(f[name]);
+console.log(f.name);
+console.log(f['name']);
+console.log(f[name]);
 
-		f.major = 'elec eng';
-		console.log(f.major);
-		console.log(f['major']);
-		f.age = 40;
-		console.log(f.age);
+f.major = 'elec eng';
+console.log(f.major);
+console.log(f['major']);
+f.age = 40;
+console.log(f.age);
 
-		f['full-name'] = 'foo bar';
-		console.log(f['full-name']);
-		console.log(f.full-name);
-		console.log(name);
+f['full-name'] = 'foo bar';
+console.log(f['full-name']);
+console.log(f.full-name);
+console.log(name);
 
-		console.log("==for in==");
-		var foo2 = {
-			name : 'foo',
-			age : 30,
-			major : 'computer science'
-		}
+console.log("==for in==");
+var foo2 = {
+	name : 'foo',
+	age : 30,
+	major : 'computer science'
+}
 
-		var prop;
-		for(prop in foo2){
-			console.log(prop,foo2[prop]);
-		}
+var prop;
+for(prop in foo2){
+	console.log(prop,foo2[prop]);
+}
 
-		console.log("==reference type 특성==");
+console.log("==reference type 특성==");
 
 		var objA = {val:10};
 		var objB = objA;
@@ -223,8 +222,4 @@
  		var num = 0.5;
  		console.log(num.toExponential(1));
  		console.log("test".charAt(2));
-
- 	</script>
-
-</html>
 ```
