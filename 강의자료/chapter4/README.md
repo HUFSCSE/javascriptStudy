@@ -1,8 +1,5 @@
 
-[TOC]
-
-
-## Chapter 04. 함수와 프로토타입 체이닝
+# Chapter 04. 함수와 프로토타입 체이닝
 자바스크립트에서 중요한 개념 1순위? 함수
 * 함수 생성
 * 함수 객체
@@ -10,7 +7,7 @@
 * 함수 호출과 this
 * 프로토타입과 프로토타입 체이닝
 
-### 4.1 함수 정의
+## 4.1 함수 정의
 함수를 생성하는 방법 3가지
 1. 함수 선언문(function statement)
 2. 함수 표현식(function expression)
@@ -18,7 +15,7 @@
 
 같은 함수를 생성하지만 각각의 방식에 따라 미묘한 차이가 있다.
 
-#### 4.1.1 함수 리터럴
+### 4.1.1 함수 리터럴
 함수 = 일반객체 -> 함수 리터럴을 이용해서 함수를 생성한다.
 
 ```javascript
@@ -413,4 +410,396 @@ inner(); // 2
 1. parnet 함수가 실행된 리턴값이 inner변수에 child 리턴이됨.
 2. 리턴된 child를 실행
 
-실행이 끝난 parent()와 같은 부모 함수 스코프의 변수를 참조하는 inner()함수를 **클로저**라고 한다
+실행이 끝난 parent()와 같은 부모 함수 스코프의 변수를 참조하는 inner()함수를 **클로저**라고 한다.
+### 4.3.2 함수를 리턴하는 함수
+일반 값처럼 함수 자체를 리턴할 수도 있다.
+```javascript
+/*4-20*/
+var self = function(){
+	console.log('a');
+	return function(){
+		console.log('b');
+	}
+}
+self = self();
+self();
+```
+```
+a
+b
+```
+* 첫번째 self함수 호출에서 a가 출력된다.
+* 리턴값이 변수 self 에 저장된다.
+* 두번째 self함수는 b가 출력된다.
+
+## 4.4 함수 호출과 this
+### 4.3.1 arguments 객체
+함수를 호출할 때 함수 형식에 맞춰 인자를 넘기지 않아도 에러가 발생하지 않는다.
+```javascript
+/*4-21*/
+function func(arg1, arg2){
+	console.log(arg1, arg2);
+}
+func();
+func(1);
+func(1,2);
+func(1,2,3);
+```
+```
+undefined undefined
+1 undefined
+1 2
+1 2
+```
+* 넘겨지지 않은 인자에는 undefined가 할당된다.
+* *그러면 정의된 인자보다 많게 함수를 호출하면?*
+* arguments 객체는 함수를 호출할 때 넘긴 인자들이 배열 형태로 저장된 객체를 의미한다.
+* 실제 배열이아닌 **유사 배열 객체**이다.
+
+```javascript
+function add(a, b){
+	console.dir(arguments);
+	return a + b;
+}
+console.log('add1 = ' + add(3));
+console.log('add1,2 = ' + add(3, 6));
+console.log('add1,2,3 = ' + add(3, 6, 9));
+```
+arguments 객체는 다음과 같이 세부분으로 구성되어 있다.
+* 함수를 호출할 때 넘겨진 인자(배열 형태)
+* length 프로퍼티 - 호출할 때 넘겨진 인자의 개수
+* callee 프로퍼티 - 현재 실행 중인 함수의 참조값(예제에서는 add() 함수)
+
+arguments 객체는 배열이 아니기 때문에 배열 메서드를 사용하면 에러가 발생한다.
+but, 사용하는 방법은 있다.(call, apply)
+
+**arguments 객체를 어떻게 잘 사용할까?**
+```javascript
+/*4-22-2*/
+function sum(){
+	var result = 0;
+	for(var i = 0; i < arguments.length; i++){
+		result +=  arguments[i];
+	}
+	return result;
+}
+console.log("1+2+3 = " + sum(1,2,3));
+console.log("1+2+3+4+5= " + sum(1,2,3,4,5));
+```
+```
+1+2+3 = 6
+1+2+3+4+5= 15
+```
+
+### 4.4.2 호출 패턴과 this 바인딩
+함수가 호출되는 방식에 따라 this가 다른 객체를 참조한다.(this 바인딩)
+
+#### 4.4.2.1 객체의 메서드 호출할 때 this 바인딩
+메서드 내부 코드에서 사용된 this는 해당 메서드를 호출한 객체로 바인딩된다.
+```javascript
+/*4-23*/
+var myObject = {
+	name: 'foo',
+	sayName: function(){
+		console.log(this.name);
+	}
+};
+
+var otherObject = {
+	name: 'bar'
+};
+otherObject.sayName = myObject.sayName;
+myObject.sayName();
+otherObject.sayName();
+```
+```
+foo
+bar
+```
+**this는 자신을 호출한 객체에 바인딩된다.**
+
+#### 4.4.2.2 함수를 호출할 때 this 바인딩
+
+함수 내부 코드에서 사용된 this는 전역객체에 바인딩된다.
+브라우저의 경우 전역객체는 window 객체이다.
+```html
+<!DOCTYPE html>
+<html><body>
+	<script>
+    	/*4-24*/
+		var foo = "I'm foo";
+
+		console.log(foo);
+		console.log(window.foo);
+	</script>
+</body></html>
+```
+```html
+<!DOCTYPE html>
+<html><body>
+	<script>
+    	/*4-25*/
+		var test = 'This is test';
+		console.log(window.test);
+
+		var sayFoo = function(){
+			console.log(this.test);
+		};
+		sayFoo();
+	</script>
+</body></html>
+```
+
+++함수 호출에서의 this 바인딩 특성은 내부함수(Inner function)를 호출했을 경우에도 그대로 적용되므로 주의해야한다.++
+
+```html
+<html><body>
+	<script>
+        /*4-26*/
+        var value = 100;
+        var myObject = {
+            value : 1,
+            func1 : function(){
+                this.value += 1;
+                console.log('func1() called. this.value : ' + this.value); //...1
+
+                func2 = function(){
+                    this.value += 1;
+                    console.log('func2() called. this.value : ' + this.value); //...2
+
+                    func3 = function(){
+                        this.value += 1;
+                        console.log('func3() called. this.value : ' + this.value); //...3
+                    }
+                    func3(); // 내부 함수 호출
+                }
+                func2(); // 내부 함수 호출
+            }
+        };
+        myObject.func1();
+</script>
+</body></html>
+```
+
+1. func1 에서 this는 호출한 자신을 가리키고 value는 1이므로 2가 찍힌다.
+2. func2 에서도 this 는 자기자신을 가리킬것이고 value는 2이므로 3이될 것이다.
+3. func3 에서도 this 는 자기자신을 가리킬것이고 value는 3이므로 4가될 것이다.
+```
+func1() called. this.value : 2
+func2() called. this.value : 3
+func3() called. this.value : 4
+```
+라고 생각하겠지만 실행결과는
+```
+func1() called. this.value : 2
+func2() called. this.value : 101
+func3() called. this.value : 102
+```
+
+내부 함수 호출 패턴을 정의해 놓지 않기 때문이다.
+2번 3번의 this는 window 객체가 된다.
+
+하지만 방법이 있다
+```html
+<html><body>
+	<script>
+        /*4-27*/
+        var value = 100;
+        var myObject = {
+            value : 1,
+            func1 : function(){
+                var that = this;
+                this.value += 1;
+                console.log('func1() called. this.value : ' + this.value); //...1
+
+                func2 = function(){
+                    that.value += 1;
+                    console.log('func2() called. this.value : ' + that.value); //...2
+
+                    func3 = function(){
+                        that.value += 1;
+                        console.log('func3() called. this.value : ' + that.value); //...3
+                    }
+                    func3(); // 내부 함수 호출
+                }
+                func2(); // 내부 함수 호출
+            }
+        };
+        myObject.func1();
+</script>
+</body></html>
+```
+++func1 함수 호출시 this값을 다른 변수(that)에 저장한다.++
+#### 4.4.2.3 생성자 함수를 호출할 때 this 바인딩
+기존함수에 new 연산자를 붙여서 호출하면 해당 함수는 생성자 함수로 동작한다.
+함수 이름의 첫 문자를 대문자로 쓰는것이 관습이다.
+
+**생성자 함수가 동작하는 방식**
+1. 빈 객체 생성 및 this 바인딩
+2. this를 통한 프로퍼티 생성
+3. 생성된 객체 리턴
+
+```javascript
+/*4-28*/
+var Person = function(name){
+	this.name = name;
+}
+
+var foo = new Person('foo');
+console.log(foo.name);
+
+console.log(Person('bar'));
+```
+```
+foo
+undefined
+```
+1. Person() 함수가 생성자로 호출되면. 함수가 실행되기 전에 빈객체로 생성됨
+2. 빈 객체는 Person() 생성자 함수의 prototype 프로퍼티가 가리키는 객체를 링크로 연결해서 자신의 프로토타입으로 설정.
+3. 생성된 객체는 생성자 함수코드에서 사용되는 this로 바인딩된다.
+4. this가 가리키는 빈 객체에 name이라는 동적 프로퍼티 생성.
+5. 리턴값이 없으므로 this로 바인딩한 객체가 생성자 함수의 리턴값으로 반환된다.
+
+##### 객체 리터럴 방식과 생성자 함수를 통한 객체 생성방식의 차이
+* **프로토타입 객체** 에 차이가 있다.
+* 객체 리터럴 방식의 경우 자신의 프로토타입 객체가 Object 이고 생성자 함수 방식의 경우 Person으로 서로 다르다.
+* 자바스크립트 객체 생성 규칙 대문에 이런 차이가 발생한다.
+* 생성자 함수의 prototype 프로퍼티가 가리키는 객체를 자신의 프로토타입 객체로 설정한다.
+* 객체 리터럴 방식 - 객체 생성자 함수는 Object()
+* 생성자 함수 방식 - 생성자 함수 자체
+
+```javascript
+/*4-21*/
+var foo = {
+	name : 'foo',
+	age : 35,
+	gender : 'man'
+};
+console.dir(foo);
+
+function Person(name, age, gender, position){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+}
+
+var bar = new Person('bar', '33,', 'woman');
+console.dir(bar);
+var baz = new Person('baz', '25', 'woman');
+console.dir(baz);
+```
+*크롬 개발자도구에서 확인*
+
+**프로토타임 체이닝**에서 자세히 다룬다.
+
+##### 생성자 함수를 new를 붙이지 않고 호출할 경우
+일반 함수 호출 - this가 window 전역 객체에 바인딩된다.
+생성자 함수 호출 = this가 새로 생성되는 빈 객체에 바인딩 된다.
+
+```javascript
+/*4-30*/
+function Person(name, age, gender, position){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+}
+var qux = Person('qux', 20, 'man');
+
+console.log('qux : ' + qux);
+console.log('name : ' + window.name);
+console.log('age : ' + window.age);
+console.log('gender :' + window.gender);
+```
+```
+qux : undefined
+name : qux
+age : 20
+gender : man
+```
+1. 일반 함수 Person을 호출
+2. 리턴이 없으므로 qux는 undefined로 출력된다.
+3. 일반함수 이기때문에 window객체에 바인딩된다.
+
+*강제로 인스턴스 생성해보고 이해하기 - 과제(p.114참고)*
+
+#### 4.4.2.4 call과 apply 메서드를 이용한 명시적인 this 바인딩
+this를 특정 객체에 명시적으로 바인딩 시키는 방법? **apply(), call() 메서드**
+
+```javascript
+function.apply(thisArg, argArray)
+```
+첫번째 인자는 this에 바인딩할 객체.
+두번째 인자는 함수를 호출할때 넘길 인자들의 배열.
+```javascript
+/*4-31*/
+function Person(name, age, gender){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+}
+//빈 객체 생성
+var foo = {};
+var bar = {};
+
+Person.apply(foo, ['foo', 30, 'man']);
+console.dir(foo);
+Person.call(bar, 'foo', 30, 'man');
+console.dir(bar);
+```
+this를 foo 객체에 명시적으로 바인딩한다.
+
+`call() 메서드는 apply()와 기능은 같지만, 배열이아닌 각각 하나의 인자로 넘긴다는 차이점이 있다.`
+
+*예제4-32 보류합니다. 좀더 개념을 잡고 보도록할게요.*
+
+### 4.3.3 함수 리턴
+**자바스크립트 함수는 항상 리턴값을 반환한다**
+return 문을 사용하지 않았더라도 항상 리턴값을 반환함.
+
+#### 4.4.3.1 일반함수나 메서드는 리턴값을 지정하지 않을 경우, undefined값이 리턴된다.
+
+```javascript
+/*4-34*/
+var noReturnFunc = function(){
+	console.log('리턴값이 없습니다.');
+}
+var result = noReturnFunc();
+console.log(result);
+```
+```
+리턴값이 없습니다.
+undefined
+```
+
+#### 4.3.3.2 생성자 함수에서 리턴값을 지정하지 않을 경우 생성된 객체가 리턴된다
+*예제 4-28 참고.*
+
+this로 바인딩되서 생성된 객체가 아닌 다른 객체를 리턴하면?
+```javascript
+/*4-35*/
+function Person(name, age, gender){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+	//명시적으로 다른 객체 반환
+	return {name:'bar', age:20, gender:'woman'};
+}
+
+var foo = new Person('foo', 30, 'man');
+console.dir(foo);
+```
+
+##### 기본타입값을 리턴했을 경우
+```javascript
+/*4-36*/
+function Person(name, age, gender){
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+	//명시적으로 다른 객체 반환
+	return {name:'bar', age:20, gender:'woman'};
+}
+
+var foo = new Person('foo', 30, 'man');
+console.dir(foo);
+```
