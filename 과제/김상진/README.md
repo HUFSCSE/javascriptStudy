@@ -27,8 +27,8 @@ call by Reference(참조에 의한 전달): 어떤 특정한 데이터 값이 �
     value is not change
     value is change
     ==================================
-    value is change
-    Refernce Value 
+    value is change // 
+    Refernce Value 
     ==================================
     value is not change
     Refernce Value 
