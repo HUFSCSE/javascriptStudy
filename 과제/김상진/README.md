@@ -24,12 +24,12 @@ call by Reference(참조에 의한 전달): 어떤 특정한 데이터 값이 �
     console.log(Reference.value);
     
 #### 결과값 ####
+
     value is not change
     value is change
     ==================================
-    value is change // 
+    value is change
     Refernce Value 
     ==================================
     value is not change
-    Refernce Value 
-    
+    Refernce Value
