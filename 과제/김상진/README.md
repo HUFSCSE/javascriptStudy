@@ -6,6 +6,7 @@ call by Reference(참조에 의한 전달): 어떤 특정한 데이터 값이 �
  
     var Value = "value is not change";
     var Reference = {value: "value is change"};
+    
     function change(Value, Refernece){
         Value = "value is change";
         Reference.value = "Refernce Value ";
@@ -13,6 +14,7 @@ call by Reference(참조에 의한 전달): 어떤 특정한 데이터 값이 �
         console.log(Value);
         console.log(Reference.value);
     };
+    
     console.log(Value);
     console.log(Reference.value);
     console.log("==================================");
