@@ -74,6 +74,32 @@ obj.foo();
 //일반함수 호출에서의 this는 전역객체에 바인딩된다.
 ```
 
+```
+var value = 1;
+var obj = {
+  value:100,
+  foo: function(){
+    var that = this;
+
+    console.log(this);   //obj
+    console.log(this.value);    //100
+
+    function bar(){
+      console.log(that);    //obj
+      console.log(that.value);  //100
+
+      function bar2(){
+        console.log(that)   //obj
+        console.log(that.value);  //100
+      }
+      bar2();
+    }
+    bar();
+  }
+}
+obj.foo();
+```
+
 
 
 
@@ -87,6 +113,56 @@ obj.foo();
 3. 생성된 객체 반환
 
 
+```
+var Person = function(name){
+  this.name = name;
+  //console.log(this);    //Person 객체에 바인딩
+}
+
+var me = new Person('me');    //부모함수를 Person으로 둔 새로운 객체 생성
+console.log(me.name);
+```
+
+#### 객체 리터럴, 생성자 함수 방식 차이 ####
+
+
+```
+//객체 리터럴 방식
+var foo = {
+  name:'foo',
+  gender: 'male'
+}
+console.dir(foo);
+
+//생성자 함수 방식
+var Person = function(name, gender){
+  this.name = name;
+  this.gender = gender;
+}
+
+var me = new Person('sangjin', 'male');
+console.dir(me);    //부모함수명
+```
+
+
+#### Scope-Safe Constructor ####
+
+
+`
+function A(arg){
+
+  if(!(this instanceof arguments.callee))
+  return new arguments.callee(arg);
+
+  this.value = arg ? arg : 0;
+}
+
+var a = new A(100);
+var b = A(10);
+
+console.log(a.value);
+console.log(b.value);
+`
 
 
  ### 4) apply 호출 패턴(Apply Invocation Pattern) ###
