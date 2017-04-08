@@ -29,7 +29,7 @@
  - Object.prototype 객체는 자바스크립트 모든 객체의 조상역할을 한다(프로토타입 체이닝의 종점)
 
 ## 7. 함수 호출 패턴과 this 바인딩
-  ##### 1) 메서드 호출 패턴(Method Invocation Pattern)
+  ### 1) 메서드 호출 패턴(Method Invocation Pattern) ###
 ```
 var obj1 = {
   name: 'kim',
