@@ -50,13 +50,35 @@ obj2.sayName();
 
 
   
-  2) 함수 호출 패턴(Function Invocation Pattern)
+ ### 2) 함수 호출 패턴(Function Invocation Pattern) ###
   	- Browser-side: window
   	- Server-side: global
 
+```
+var value = 1;
+var obj = {
+  value: 100,
+  foo: function(){
+    var that = this;
+    console.log(this);    //this == obj
+    console.log(this.value);
+
+    function bar(){
+      console.log(this);    //global
+      console.log(this.value);
+    }
+    bar();
+  }
+}
+obj.foo();
+//일반함수 호출에서의 this는 전역객체에 바인딩된다.
+```
 
 
-  3) 생성자 호출 패턴(Constructor Invocation Pattern)
+
+
+
+ ### 3) 생성자 호출 패턴(Constructor Invocation Pattern) ###
   -> 다음과 같은 순서로 생성자 함수가 호출됨
 	1. 빈 객체 생성 및 this 바인딩
 	2. this를 통한 프로퍼티 생성
@@ -65,7 +87,7 @@ obj2.sayName();
 
 
 
-  4) apply 호출 패턴(Apply Invocation Pattern)
+ ### 4) apply 호출 패턴(Apply Invocation Pattern) ###
 
 
 
