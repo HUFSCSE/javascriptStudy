@@ -148,7 +148,7 @@ console.dir(me);    //부모함수명
 #### Scope-Safe Constructor ####
 
 
-`
+```
 function A(arg){
 
   if(!(this instanceof arguments.callee))
@@ -162,10 +162,97 @@ var b = A(10);
 
 console.log(a.value);
 console.log(b.value);
-`
+```
+
 
 
  ### 4) apply 호출 패턴(Apply Invocation Pattern) ###
+
+```
+var Person = function(name, gender){
+  this.name = name;
+  this.gender = gender;
+}
+
+var foo = {};
+
+Person.apply(foo, ['name', 'male']);    // == Person.call(foo, 'name', 'male');
+console.log(foo);
+
+```
+
+
+```
+function convert(){
+  console.log(arguments);
+  var arr = Array.prototype.slice.apply(arguments);
+
+  console.log(arr);
+  return arr;
+}
+
+convert(1,2);
+```
+
+
+```
+function Person(name){
+  this.name = name;
+}
+
+Person.prototype.doSomething = function(callback){
+  if(typeof callback == 'function'){
+    callback.call(this);
+  }
+};
+
+function foo(){
+  console.log(this.name);
+  console.log(this);
+}
+
+var p = new Person('pp');
+p.doSomething(foo);
+```
+
+
+```
+function Person(name, gender){
+  this.name = name;
+  this.gender = gender;
+}
+
+Person.prototype.doSomething = function(callback){
+  if(typeof callback == 'function'){
+    callback.call(this);   //일반함수 호출
+  }
+};
+
+function foo2(){
+  console.log(this.name);
+  console.log(this.gender);
+}
+
+var p = new Person('ppp', 'male');
+p.doSomething(foo2);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
