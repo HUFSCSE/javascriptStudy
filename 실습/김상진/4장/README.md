@@ -2,8 +2,8 @@
  - 직접함수를 호출하는 경우: this는 global객체가 됨
  - new로 생성하지 않으면 직접함수 호출과 같다 -> global객체가 됨
 
-## 2.global 객체가 아닌 3가지경우(ECMAScript의 규약을 따를것)
- - function 영역에서의 this는 부모 객체이다. 단, 그 부모의 자식으로서 불렸을 떄에만 즉, 객체의 프로퍼티일때
+## 2.global 객체가 아닌 2가지경우(ECMAScript의 규약을 따를것)
+ - function 영역에서의 this는 부모 객체이다. 단, 그 부모의 자식으로서 불렸을 때에만 즉, 객체의 프로퍼티일때
  - new 연산자로 생성된 function 영역의 this는 새로 생성된 객체 그 자신이다.
 
 ## 3. call과 apply 메서드를 이용한 명시적인 this 바인딩
@@ -27,3 +27,52 @@
  - c++이나 자바같은 객체지향 프로그래밍에서 객체를 생성한다는건 class를 정의하는것, 자바스크립트에서 객체를 생성한다는것은 객체리터럴이나, 생성자함수를 통해 하는것
  - 생성자함수는 prototype 프로퍼티를 갖는데 이것은 prototype객체를 가르킨다 생성자함수를 통해 생성된 새로운 객체는 prototype객체가 가르키는 prototype객체를 자신의 부모객체로 설정한다 이렇게 연결된것을 prototype링크 라고 한다.
  - Object.prototype 객체는 자바스크립트 모든 객체의 조상역할을 한다(프로토타입 체이닝의 종점)
+
+## 7. 함수 호출 패턴과 this 바인딩
+  1) 메서드 호출 패턴(Method Invocation Pattern)
+```
+var obj1 = {
+  name: 'kim',
+  sayName: function(){
+    console.log(this.name);
+  }
+}
+
+var obj2 = {
+  name: 'sangjin'
+}
+
+obj2.sayName = obj1.sayName;
+
+obj1.sayName();
+obj2.sayName();
+```
+
+
+  
+  2) 함수 호출 패턴(Function Invocation Pattern)
+  	- Browser-side: window
+  	- Server-side: global
+
+
+
+  3) 생성자 호출 패턴(Constructor Invocation Pattern)
+  -> 다음과 같은 순서로 생성자 함수가 호출됨
+	1. 빈 객체 생성 및 this 바인딩
+	2. this를 통한 프로퍼티 생성
+	3. 생성된 객체 반환
+
+
+
+
+  4) apply 호출 패턴(Apply Invocation Pattern)
+
+
+
+
+
+
+
+
+
+
