@@ -274,7 +274,7 @@ p.doSomething(foo);
 ```
 
 
-```
+```javaScript
 function Person(name){
   this.name = name;   //Person객체에 있는 name에다가 name을 할당
 }
