@@ -223,7 +223,8 @@ console.log(obj.baz()); // 출력값 200
 ```
 프로퍼티에도 함수가 할당 가능하다.
 물론 배열에도 할당이 가능하다. 배열에 할당해보세요- 과제
-####4.2.2.2 함수 인자로 전달
+
+#### 4.2.2.2 함수 인자로 전달
 ```javascript
 /*4-10*/
 //함수 표현식으로 foo() 함수 생성
@@ -292,10 +293,10 @@ function func2(x, y){
 function func3(x, y, z){
 	return x + y + z;
 }
-console.log('func1.length - ' + func0.length);
+console.log('func0.length - ' + func0.length);
 console.log('func1.length - ' + func1.length);
-console.log('func1.length - ' + func2.length);
-console.log('func1.length - ' + func3.length);
+console.log('func2.length - ' + func2.length);
+console.log('func3.length - ' + func3.length);
 ```
 ```
 func1.length - 0
