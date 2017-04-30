@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 4</title>
+</head>
+<body>
+</body>
+<script>
+    console.log("객체의 매서드 호출할 때 this 바인딩(메서드 호출패턴)");
+    var obj = {
+        name: 'foo',
+        sayName: function () {
+            console.log(this.name);
+
+        }
+    };
+
+    var otherObj = {
+        name:'bar'
+    };
+    otherObj.sayName = obj.sayName;
+
+    obj.sayName(); // foo
+    otherObj.sayName(); // bar
+
+
+
+    console.log("함수를 호출할 때 this 바인딩(함수호출 패턴)");
+    function func() {
+        alert('hello');
+    }
+
+//    func();
+//    window.func();
+
+    var value = 100; //a
+    var myobj = {
+        value:1, //b
+        func1:function () {
+            this.value +=1; //b
+            console.log('1 : '+ this.value); //b
+
+            func2 = function () {
+                this.value +=1; //a
+                console.log('2 : '+this.value); //a
+
+                func3 = function () {
+                    this.value+=1; //a
+                    console.log('3 : '+this.value); //a
+                }
+                func3();
+            };
+            func2();
+        }
+    };
+    console.log(this.value); //a
+    myobj.func1();
+
+    console.log("해결 방법");
+    var value = 100;
+    var myobj = {
+        value:1,
+
+        func1: function(){
+            var that = this;    // this == myobj
+            this.value +=1;
+            console.log('1 ' + this.value);
+
+            var func2 = function(){
+                that.value +=1;
+                console.log('2 ' + that.value);
+
+                var func3 = function(){
+                    that.value +=1;
+                    console.log('3 ' + that.value);
+                };
+                func3();
+            };
+            func2();
+        }
+    };
+    myobj.func1();
+
+
+
+    console.log("생성자 함수를 호출할 때 this 바인딩(생성자 함수 호출 패턴)");
+    console.log("Scope-Safe Constructor");
+    function A(arg){
+
+        if(!(this instanceof arguments.callee))
+            return new arguments.callee(arg);
+
+        this.value = arg ? arg : 0;
+    }
+
+    var a = new A(100);
+    var b = A(10);
+
+    console.log(a.value);
+    console.log(b.value);
+
+    console.log("call과 apply 메서드를 이용한 명시적인 this바인딩(apply,call 호출패턴)");
+    var Person = function (name, gender) {
+        this.name = name;
+        this.gender = gender;
+    };
+    var foo = {};
+    Person.apply(foo,['khk','male']);
+    console.log(foo);
+    Person.call(foo,'abc','female');
+    console.log(foo);
+
+    console.log("Array.prototype.slice");
+    function convert() {
+        console.log(arguments);
+        var arr = Array.prototype.slice.apply(arguments);
+
+        console.log(arr);
+        return arr;
+    }
+    var a = convert(1,2,3);
+    console.log(a);
+
+    //
+
+    function MyPerson(myname){
+        this.myname = myname;
+    }
+
+    MyPerson.prototype.doSomething = function (callback) {
+        if(typeof callback == 'function') {
+            callback();
+        }
+    };
+
+    function foofoo(){
+        console.log(this.myname); //전역 객체
+        console.log(this); // Window
+    }
+
+    var pp = new MyPerson('pp');
+    pp.doSomething(foofoo);
+
+    //
+
+    function MyPerson2(name2){
+        this.name = name2;
+    }
+
+    MyPerson2.prototype.doSomething = function(callback) {
+        if(typeof callback == 'function'){
+            callback.call(this);    //call()함수를 써서 this에 바인딩시킴
+        }
+    };
+
+    function foofoofoo(){
+        console.log(this.name);
+        console.log(this);
+    }
+
+    var pppp = new MyPerson2('pp');
+    pppp.doSomething(foofoofoo);
+
+
+
+    console.log("함수 리턴 : 자바스크립트는 항상 리턴값을 반환 한다")
+    var noR = function () {
+        console.log('no Return');
+    };
+    var nr = noR();
+    console.log(nr);
+
+
+
+    console.log("프로토타입 체이닝");
+    function Person(name){
+        this.name = name;
+    }
+
+    var foo = new Person('foo');
+
+    console.dir(Person);
+    console.dir(foo);
+
+    var myAbc = {
+        name:'foo',
+        sayName: function () {
+            console.log("myname is "+this.name);
+
+        }
+    };
+    myAbc.sayName();
+    //자바스크립트 표준 API 함수
+    console.log(myAbc.hasOwnProperty('name'));
+    console.log(myAbc.hasOwnProperty('nickname'));
+
+    function Na(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    var nnn = new Na('nn',10);
+    console.log(nnn.hasOwnProperty('name'));
+    console.dir(nnn);
+
+    String.prototype.testMethod = function () {
+        console.log("test");
+
+    };
+    var str = 'dd';
+    str.testMethod();
+    console.dir(String.prototype);
+
+    function Last(name) {
+        this.name = name;
+    }
+
+    Last.prototype.getLast = function () {
+        return this.name;
+    };
+
+    var l = new Last('last');
+    console.log(l.getLast()); //메서드를 호출한 객체가 l
+
+    Last.prototype.name = 'hello';
+    console.log(Last.prototype.name);
+    console.log(l.getLast()); //메서드를 호출한 객체가 l
+
+    console.dir(l);
+    console.dir(Last.prototype);
+
+
+
+</script>
+</html>
