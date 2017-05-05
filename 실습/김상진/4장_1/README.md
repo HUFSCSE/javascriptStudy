@@ -31,7 +31,7 @@
  - length 프로퍼티: 호출할때 넘겨진 인자의 갯수를 의미
  - callee 프로퍼티: 현재 실행중인 함수의 참조값(예제에서는 func)
 
-```
+```javascript
 //arguments 객체
 function func(arg1, arg2) {
     console.log(arguments);
@@ -66,7 +66,7 @@ console.log(sum(1,2,3,4,5));
  - 해당 메서드를 호출한 객체로 바인딩 한다
 
 
-```
+```javascript
 var myObj = {
   name: 'foo',
   sayName: function() {
@@ -89,7 +89,7 @@ otherObj.sayName(); //otherObj에 this 바인딩
  - 자바스크립트의 모든 전역변수는 전역객체의 프로퍼티이다
 
 
-```
+```javascript
 <html>
 <body>
     <script>
@@ -106,7 +106,7 @@ otherObj.sayName(); //otherObj에 this 바인딩
 ```
 
 
-```
+```javascript
 var value = 100;
 var myobj = {
   value:1,
@@ -131,7 +131,7 @@ myobj.func1();
 ```
 
 
-```
+```javascript
 var value = 100;
 var myobj = {
   value:1,
@@ -167,7 +167,7 @@ myobj.func1();
 3. 생성된 객체 반환
 
 
-```
+```javascript
 var Person = function(name){
   this.name = name;
   //console.log(this);    //Person 객체에 바인딩
@@ -180,7 +180,7 @@ console.log(me.name);
 #### 객체 리터럴, 생성자 함수 방식 차이 ####
 
 
-```
+```javascript
 //객체 리터럴 방식
 var foo = {
   name:'foo',
@@ -202,7 +202,7 @@ console.dir(me);    //부모함수명
 #### Scope-Safe Constructor
 
 
-```
+```javascript
 function A(arg){
 
   if(!(this instanceof arguments.callee))
@@ -224,7 +224,7 @@ console.log(b.value);
  - call(thisArg, arg)
 
 
-```
+```javascript
 var Person = function(name, gender){
   this.name = name;
   this.gender = gender;
@@ -240,7 +240,7 @@ console.log(foo);
  - Arrpay.prototype.slice(start, end): start부터 end-1까지의 배열요소를 리턴한다, 아무것도 쓰지않거나 0을쓰면 전체 배열 요소 리턴
 
 
-```
+```javascript
 function convert(){
   console.log(arguments);
   var arr = Array.prototype.slice.apply(arguments);
@@ -253,7 +253,7 @@ convert(1,2);
 ```
 
 
-```
+```javascript
 function Person(name){
   this.name = name;
 }
@@ -303,7 +303,7 @@ p.doSomething(foo);
  - 규칙 (1): 일반 함수나 메서드는 리턴값을 지정하지 않을경우, undefined 가 리턴된다
  - 규칙 (2) : 생성자 함수에서 리턴값을 지정하지 않을 경우 생성된 객체가 리턴 된다.
 
-```
+```javascript
 //규칙 1
 var noReturn = function() {
   console.log('noReturn');
@@ -332,7 +332,7 @@ console.dir(foo);
  - ECMAScript에서는 이러한 링크를 **암묵적 프로토타입링크** 라고한다
 
 
-```
+```javascript
 //prototype 프로퍼티와 [[Prototype]] 링크 구분
 function Person(name){
 this.name = name;
@@ -348,7 +348,7 @@ console.dir(foo);
 #### 4.5.2 객체 리터럴 방식으로 생성된 객체의 프로토타입 체이닝
 
 
-```
+```javascript
 var myObj = {
   name: 'foo',
   sayName: function(){
@@ -368,7 +368,7 @@ console.log(myObj.hasOwnProperty('nickname'));
 #### 4.5.3 생성자 함수로 생성된 객체의 프로토타입 체이닝 ####
 
 
-```
+```javascript
 function Person(name, age){
   this.name = name;
   this.age = age;
@@ -391,7 +391,7 @@ console.dir(Person.prototype);
  - 또한, 이러한 표준 빌트인 객체에도 사용자가 직접 메서드나, 프로퍼티를 추가할수 있다.
 
 
-```
+```javascript
 String.prototype.testMethod = function (){
   console.log('this is testMethod');
 };
@@ -405,7 +405,7 @@ console.dir(String.prototype);
 
 #### 4.5.6 프로토타입도 자바스크립트 객체이다 ####
 
-```
+```javascript
 function Person(name){
   this.name = name;
 }
@@ -424,7 +424,7 @@ foo.sayHello();
  - 4.4.2.1에서 설명한 this바인딩 규칙을 그대로 따른다.
  - 메서드 호출 패턴에서의 this는 그 메서드를 호출한 객체에 바인딩된다.
 
-```
+```javascript
 function Person(name){
   this.name = name;
 }
