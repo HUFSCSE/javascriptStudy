@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter 6</title>
+</head>
+<body>
+</body>
+<script>
+    Function.prototype.method = function (name, func) {
+        this.prototype[name] = func;
+
+    };
+
+    function Person(arg) {
+        this.name = arg;
+    }
+
+    Person.method("setName", function (name) {
+        this.name = name;
+
+    });
+
+    Person.method("getName", function () {
+        return this.name;
+
+    });
+
+    function Student(arg) {
+    }
+
+    var inherit = function(Parent, Child){
+        var F = function(){};
+        return function(Parent, Child){
+            F.prototype = Parent.prototype;
+            Child.prototype = new F();
+            Child.prototype.constructor = Child;
+            Child.super = Parent.prototype;
+        };
+
+    }();
+
+    inherit(Person, Student);
+
+
+    var me = new Student();
+    me.setName("hello");
+    console.log(me.getName());
+
+    var p = new Person("cola");
+    p.age = 30;
+
+    Person.method("setAge", function (name) {
+        this.age = name;
+
+    });
+
+    Person.method("getAge", function () {
+        return this.age;
+
+    });
+
+    console.log(p.getAge());
+    console.log(me.getAge());
+
+</script>
+</html>
