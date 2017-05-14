@@ -1,18 +1,19 @@
 
 # Chapter 06. 객체지향 프로그래밍
-#####객체지향 언어의 특성
+##### 객체지향 언어의 특성
 * 클래스, 생성자, 메서드
 * 상속
 * 캡슐화
 
-#####클래스 기반 언어 vs 프로토타입 기반 언어
+##### 클래스 기반 언어 vs 프로토타입 기반 언어
 - 클래스 기반 언어 : 정적 타입의 언어(Java, C++ ), 정확성 안전성 예측성 등에서 장점, 런타임에 바꿀 수 없는 단점
 - 프로토타입 기반 언어 : 동적 타입 언어(Javascript), 객체의 자료구조, 메서드 등을 동적으로 바꿀 수 있는 자유로움이 장점 
 
 ## 6.1 클래스, 생성자, 메서드
 Java, C++ 과 같이 class 라는 키워드로 클래스를 생성하지 않는다.<br>
 자바스크립트는 거의 모든 것이 객체이고, 특히 함수 객체로 많은 것을 구현한다!
-#####실습 6-1
+
+##### 실습 6-1
 ```javascript
 /*6-1*/
 function Person(arg) {
@@ -42,7 +43,7 @@ console.log(b.getName());
 이는 메모리 자원 낭비를 가져온다. 여기서 활용할 수 있는 자바스크립트의 특성이<br>
 ***함수 객체의 프로토타입이다***
 
-#####실습 6-2
+##### 실습 6-2
 ```javascript
 /*6-2*/
 function Person(arg) {
@@ -62,7 +63,7 @@ var b = new Person("TOP");
 console.log(a.getName());
 console.log(b.getName());
 ```
-#####실습 6-3(더글라스 크락포드 방식)
+##### 실습 6-3(더글라스 크락포드 방식)
 ```javascript
 /*6-2*/
 Function.prototype.method = function (funcName, func) {
@@ -149,7 +150,7 @@ test.setName("theQ");
 console.log(test.getName());
 ```
 
-#####extend 함수를 통해서 자식 객체만의 함수를 추가해 보자
+##### extend 함수를 통해서 자식 객체만의 함수를 추가해 보자
 
 ```javascript
 /*6-6*/
@@ -197,7 +198,7 @@ student.setAge(25);
 console.log(student.getAge());
 ```
 
-#####JQuery 의 extend() 이용
+##### JQuery 의 extend() 이용
 ```html
 /*6-6-2*/
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
