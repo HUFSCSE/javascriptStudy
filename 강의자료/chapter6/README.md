@@ -436,16 +436,16 @@ console.log(me.getAge());
 var Person = function (arg) {
     var name = arg ? arg : "khk";
 
-};
 
-this.getName = function () {
-    return name;
+    this.getName = function () {
+        return name;
 
-};
+    };
 
-this.setName = function (arg) {
-    name = arg;
+    this.setName = function (arg) {
+        name = arg;
 
+    };
 };
 
 var me = new Person();
