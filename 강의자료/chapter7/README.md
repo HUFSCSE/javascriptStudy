@@ -1,5 +1,4 @@
 
-
 # Chapter 07. 함수형 프로그래밍
 프로그래밍의 여러 가지 패러다임 중 하나이다. [위키백과](https://ko.wikipedia.org/wiki/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D_%ED%8C%A8%EB%9F%AC%EB%8B%A4%EC%9E%84)
 자바스크립트로 일부 구현 가능하지만 순수한 함수형 프로그래밍 언어는 아니다.
@@ -361,4 +360,188 @@ var accumulated_val = arr.reduce(function(a,b){
 });
 
 console.log(accumulated_val);
+```
+
+### 기타
+
+```javascript
+var yangpa5 = "Marry me";
+
+function print_value() {
+	console.log(yangpa5);
+
+	var yangpa5 = "나 때문에";
+	console.log(yangpa5);
+
+	function nested() {
+		console.log(yangpa5);
+
+		yangpa5 = "사랑...그게뭔데";
+		console.log(yangpa5);
+
+		var yangpa5 = "한 사람";
+		console.log(yangpa5);
+	}
+	nested();
+}
+print_value();
+```
+
+```javascript
+{
+	var foo = 1;
+	console.log(foo);
+}
+console.log(foo);
+```
+블럭안에 있는 foo 변수를 블럭 밖에서 사용하지 못할 것으로 예상되지만 Javascript에서 위의 블럭은 아무런 의미가 없다.
+
+```javascript
+function bar() { 
+	var foo = 2; 
+	console.log(foo);
+}
+
+bar(); 
+console.log(foo);
+```
+
+```javascript
+var foo = 1; 
+console.log(foo); 
+
+{ 
+	var foo = 2; 
+	console.log(foo) 
+} 
+
+console.log(foo);
+```
+
+```javascript
+function bar() {
+	foo = 2; 
+	console.log(foo);
+} 
+
+bar(); 
+console.log(foo);
+```
+```javascript
+var foo = 1;
+console.log(foo); 
+function bar() {
+	foo = 2; 
+	var foo; 
+	console.log(foo); 
+} 
+bar(); 
+console.log(foo);
+```
+```javascript
+var foo = function() {
+	console.log("once");
+	foo = function() {
+		console.log("body");
+	}
+	foo();
+}
+
+foo();
+```
+```javascript
+var add = (function() {
+	var x = 0
+	return function() {
+		return ++x;
+	}
+})()
+```
+```javascript
+(function(){
+  return typeof arguments;
+})();
+```
+```javascript
+var f = function g(){ return 23; };
+typeof g();
+```
+
+```javascript
+var y = 1, x = y = typeof x;
+x;
+```
+
+```javascript
+(function(x){
+  delete x;
+  return x;
+})(1);
+```
+
+```javascript
+(function f(f){ 
+  return typeof f(); 
+})(function(){ return 1; });
+```
+
+```javascript
+var foo = { 
+  bar: function() { return this.baz; }, 
+  baz: 1
+};
+(function(){ 
+  return typeof arguments[0]();
+})(foo.bar);
+```
+
+```javascript
+var foo = {
+  bar: function(){ return this.baz; },
+  baz: 1
+}
+typeof (f = foo.bar)();
+```
+
+```javascript
+var f = (function f(){ return "1"; }, function g(){ return 2; })();
+typeof f;
+```
+
+```javascript
+var x = 1;
+if (function f(){}) {
+  x += typeof f;
+}
+x;
+
+```
+
+```javascript
+var x = [typeof x, typeof y][1];
+typeof typeof x;
+```
+
+```javascript
+(function(foo){
+  return typeof foo.bar;
+})({ foo: { bar: 1 } });
+```
+
+```javascript
+(function f(){
+  function f(){ return 1; }
+  return f();
+  function f(){ return 2; }
+})();
+```
+
+```javascript
+function f(){ return f; }
+new f() instanceof f;
+
+```
+
+```javascript
+with (function(x, undefined){}) length;
 ```
