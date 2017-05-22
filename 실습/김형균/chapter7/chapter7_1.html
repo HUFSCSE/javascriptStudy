@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapter7</title>
+</head>
+<body>
+<script>
+    var f1 = function(input){
+        return 1;
+    };
+    var f2 = function (input) {
+        return 2;
+    };
+    var f3 = function(input){
+        return 3;
+    };
+
+    var get_encrypted = function (func) {
+        var str = 'khk';
+        return function(){
+            return func.call(null,str);
+        }
+    };
+
+    var e = get_encrypted(f1)();
+    console.log(e);
+    var e = get_encrypted(f2)();
+    console.log(e);
+    var e = get_encrypted(f3)();
+    console.log(e);
+
+
+
+
+</script>
+</body>
+</html>
