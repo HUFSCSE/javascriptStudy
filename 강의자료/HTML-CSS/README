@@ -1,6 +1,6 @@
 
-#HTML
-HTML
+# Chapter 04. 함수와 프로토타입 체이닝
+자바스크립트에서 중요한 개념 1순위? 함수
 * 함수 생성
 * 함수 객체
 * 다양한 함수 형태
@@ -18,12 +18,11 @@ HTML
 ### 4.1.1 함수 리터럴
 함수 = 일반객체 -> 함수 리터럴을 이용해서 함수를 생성한다.
 
-```html
-<!DOCTYPE html>
-<html>
-  <head></head>
-  <body></body>
-</html>
+```javascript
+/*4-1*/
+function add(x, y){
+	return x+y;
+}
 ```
 ```
 function : 함수 리터럴은 function 키워드로 시작한다.
