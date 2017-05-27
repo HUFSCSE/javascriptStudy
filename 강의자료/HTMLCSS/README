@@ -1,3 +1,7 @@
-## HTML + CSS
+*This text will be italic*
+_This will also be italic_
 
-** Web page의 내용과 구조를 담당하는 HyperText Markup Language **
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
