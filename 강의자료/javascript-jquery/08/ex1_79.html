@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>setInterval 메서드</title>	
+	<style>
+		*{margin:0;padding:0;}
+		div{height:30px;background:red;}
+	</style>
+	<script>
+		window.onload = function(){
+			var div_bg = document.getElementById("div_bg");
+			var color = ["red","green","blue"];
+			var i = 0;
+			setInterval(function(){
+				i++;
+				if(i > 2){
+					i = 0;
+				}				
+				div_bg.style.backgroundColor = color[i];
+			},2000);
+		}
+	</script>	
+</head>
+<body>
+	<div id="div_bg"></div>	
+</body>
+</html>

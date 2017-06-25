@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout 메서드</title>	
+	<style>
+		*{margin:0;padding:0;}
+		body{background:red;}
+	</style>
+	<script>
+		window.onload = function(){			
+			var bg = document.getElementById("bg");
+			var color = ["red","green","blue"];
+			var i = 0;
+			var change_bg;
+			this.onresize = function(){	
+				clearTimeout(change_bg);
+				change_bg = setTimeout(function(){
+					i++;
+					if(i > 2){
+						i = 0;
+					}				
+					bg.style.backgroundColor = color[i];
+				},250);
+			}
+		}
+	</script>	
+</head>
+<body id="bg">		
+</body>
+</html>

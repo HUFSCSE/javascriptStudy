@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>open 메서드</title>		
+	<script>
+		window.onload = function(){
+			var bt_open = document.getElementById("bt_open");
+			var bt_close = document.getElementById("bt_close");
+			var win;
+			bt_open.onclick = function(){
+				winOpen();
+			}
+			bt_close.onclick = function(){
+				winClose();
+			} 
+			function winOpen(){
+				win = window.open("http://icoxpublish.com","icox","width=300,height=300,left=100,top=100");
+			}
+			function winClose(){
+				win.close();
+			}
+		}
+	</script>	
+</head>
+<body>
+	<button id="bt_open">열기</button>
+	<button id="bt_close">닫기</button>
+</body>
+</html>
