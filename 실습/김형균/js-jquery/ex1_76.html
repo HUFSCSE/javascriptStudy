@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script>
+        window.onload = function () {
+            var bt = document.getElementById("bt");
+            var content = document.getElementById("content");
+            var check = false;
+            bt.onclick = function () {
+                if(!check)
+                {
+                    content.style.display = "none";
+                    check = true;
+                }
+                else{
+                    content.style.display = "block";
+                    check = false;
+                }
+
+            }
+            bt.onclick();
+        }
+    </script>
+</head>
+<body>
+    <div id = "bt">bt</div>
+    <p id = "content">contents</p>
+</body>
+<script>
+</script>
+</html>

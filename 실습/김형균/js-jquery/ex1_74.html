@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script>
+        window.onload = function () {
+            var a = document.getElementById("a");
+            var b = document.getElementById("b");
+            a.onclick = function () {
+                alert("ok");
+            }
+            b.onclick = function () {
+                alert("hello");
+                if(window.event){
+                    window.event.cancelBubble = true;
+                }else{
+                    event.stopPropagation();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="a">
+        <div id="b">
+            click
+        </div>
+    </div>
+</body>
+<script>
+</script>
+</html>

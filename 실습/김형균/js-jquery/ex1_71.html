@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script>
+        function l1(){
+            alert("hello")
+        }
+        function l2() {
+            alert("world")
+        }
+        if(window.attachEvent){
+            window.attachEvent('onload',l1);
+        }else{
+            window.addEventListener('load',l1);
+        }
+
+        if(window.attachEvent){
+            window.attachEvent('onload',l2);
+        }else{
+            window.addEventListener('load',l2);
+        }
+    </script>
+</head>
+<body>
+</body>
+<script>
+</script>
+</html>

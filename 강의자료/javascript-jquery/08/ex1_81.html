@@ -13,15 +13,16 @@
 			var color = ["red","green","blue"];
 			var i = 0;
 			var change_bg;
-			this.onresize = function(){	
+			this.onresize = function(){
+
 				clearTimeout(change_bg);
 				change_bg = setTimeout(function(){
 					i++;
 					if(i > 2){
 						i = 0;
-					}				
+					}
 					bg.style.backgroundColor = color[i];
-				},250);
+				},1000);
 			}
 		}
 	</script>	

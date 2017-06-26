@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Event</title>
+    <script>
+        window.onload = function () {
+            var bt = document.getElementById("bt");
+            var check = false;
+            bt.onclick = function () {
+                console.log(this, window);
+                if(!check){
+                    this.style.background = "red";
+                    check = true;
+                }else{
+                    this.style.background = "orange";
+                    check = false;
+                }
+            };
+            bt.onclick();
+        }
+    </script>
+</head>
+<body>
+    <div id = "bt">click</div>
+</body>
+<script>
+</script>
+</html>
