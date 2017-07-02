@@ -8,7 +8,6 @@
 
 ```html
 <!DOCTYPE HTML>
-<!DOCTYPE HTML>
 <html lang ="ko">
 <head>
 	<meta charset = "UTF-8">
