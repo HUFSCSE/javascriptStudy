@@ -117,8 +117,8 @@ ul.length -> 개수 : 3개
 * parentNode      : 현재 선택된 요소의 부모노드 선택
 * childNodes      : 현재 선택된 요소의 자식 노드들(요소,텍스트 노드) 선택
 * childredn	      : 현재 선택된 요소의 자식 노드들(요소노드) 선택
-* nextSibling     : 현재 선택된 요소의 이전 형제 노드 선택
-* previousSibling : 현재 선택된 요소의 다음 형제 노드 선택
+* nextSibling     : 현재 선택된 요소의 다음 형제 노드 선택
+* previousSibling : 현재 선택된 요소의  형제 노드 선택
 * firstChild	  : 현재 선택된 요소의 자식노드중 첫번재 노드 선택
 * lastChild       : 현재 선택된 요소의 자식노드중 마지막 노드 선택
 * tagName		  : 현재 선택된 요소의 태그명 반환
