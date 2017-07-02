@@ -163,6 +163,32 @@ ul.length -> 개수 : 3개
 </html>
 ```
 
+```html
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>문서 객체를 상대위치에서 선택하는 속성들</title>
+	<script>
+		window.onload = function(){
+			var gnb = document.getElementById("gnb");
+			var gnbChilds = gnb.childNodes;
+			var gnbChildren = gnb.children;
+			alert(gnbChilds.length + "/" + gnbChildren.length);
+		}
+	</script>
+</head>
+<body>
+	<div>		
+		<ul id="gnb">
+			<li><a href="#">메뉴1</a></li>
+			<li><a href="#">메뉴2</a></li>
+			<li><a href="#">메뉴3</a></li>
+		</ul>				
+	</div>
+</body>
+</html>
+```
 ```
 결과 : 7/3
 ```
