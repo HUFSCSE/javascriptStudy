@@ -613,3 +613,137 @@ document.폼요소.요소.속성
 </body>
 </html>
 ```
+
+### 09.5 Cookie 객체
+
+* 브라우저에 사용자의 정보를 일정 기간 동안 보관해 둘 수 있도록 해 주는 객체.
+* 쿠키 객체는 쿠키를 제어하는 메서드가 마련되어있지않다.. 사용자가 직접 만들어서 사용해야함.
+
+* document.cookie
+
+쿠키를 만드는 형식
+```javascript
+name=values;expires=UTC형식;paht="/";domain="localhost";secure
+```
+
+1. name(필수) - 쿠키를 구분하는 이름. 생략할 수 없다. value는 저장값
+2. expires(선택) - 쿠키를 보관하는 유효기간 설정. UTC(국제표준시)로 설정하며 현재시간보다 이전시간으로 설정시 쿠키는 삭제됨
+3. path(선택) - 문서의 경로, 생략시 기본 경로 설정
+4. domain(선택) - 웹 서버 도메인명, 생력시 쿠카기 있는 문서의 도메인명이 됨.
+5. secure(선택) - SSL 보안 옵션이며 생력가능.
+
+#### 예제
+
+```html
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie 객체</title>	
+	<script>
+		window.onload = function(){
+			var idSave = document.frm.idSave;
+			var del = document.frm.del;
+			idSave.onclick = function(){				
+				setCookie("userId",document.frm.id.value,10);
+			}
+			del.onclick = function(){
+				setCookie("userId",document.frm.id.value,-1);
+			}
+			function setCookie(name, value, expires){			
+				var d = new Date();
+				d.setDate(d.getDate() + expires);
+				var sc = ""
+				sc += name + "=" + encodeURIComponent(value) + ";";
+				sc += "expires=" + d.toUTCString();	
+				//alert(sc);
+				document.cookie = sc;
+			}
+			function getCookie(name){				
+				var gc = document.cookie.replace(" ","");				
+				gc = gc.split(";");
+				for(var i=0;i<gc.length;i++){							
+					if(gc[i].split("=")[0] == name){
+						return gc[i].split("=")[1];
+					}
+				}									
+				return null;				
+			}			
+			document.frm.id.value = getCookie("userId");
+		}
+		function check(){
+			var frm = document.frm;
+			if(!frm.id.value){
+				alert("아이디를 입력하세요!");
+				frm.id.focus();
+				return false;
+			}
+			if(!frm.pw.value){
+				alert("비밀번호를 입력하세요!");
+				frm.pw.focus();
+				return false;
+			}	
+		}			
+	</script>
+</head>
+<body>	
+	<form action="#" name="frm" onsubmit="return check()">	
+		<fieldset>
+			<legend>로그인</legend>
+			<div><label for="id">아이디</label> <input type="text" name="id" id="id" /> <input type="button" value="아이디 저장" name="idSave" /><input type="button" value="cookie 삭제" name="del" /></div>		
+			<div><label for="pw">비밀번호</label> <input type="password" name="pw" id="pw" /></div>
+			<div><input type="submit" value="로그인" /></div>
+		</fieldset>	
+	</form>
+</body>
+</html>
+
+```
+
+#### 쓰기가 참 복잡하다..
+
+```javascript
+$(function(){
+    //최초 쿠키에 login_id라는 쿠키값이 존재하면
+    var login_id = $.cookie('login_id');
+    if(login_id != undefined) {
+        //아이디에 쿠키값을 담는다
+        $("#login_id").val(login_id);
+        //아이디저장 체크박스 체크를 해놓는다
+        $("#rememberid").prop("checked",true);
+    }
+     
+    //로그인 버튼 클릭시
+    $("#login_button").click(function(){
+        //아이디 미입력시
+        if($.trim($("#login_id").val()) == "") {
+            alert("아이디를 입력하세요");
+            return;
+        //아이디 입력시
+        } else {
+            //아이디저장 체크되어있으면 쿠키저장
+            if($("#rememberid").prop("checked")) {
+                $.cookie('login_id', $("#login_id").val());
+            //아이디저장 미체크면 쿠키에 정보가 있던간에 삭제
+            } else {
+                $.removeCookie("login_id");
+            }
+            alert("로그인!!");
+        }
+    })
+})
+
+```
+
+물론 추가옵션도 있지
+```javascript
+$.cookie('쿠키명','쿠키값',{
+            //쿠키보관일
+            expires : 5
+            //도메인
+           ,domain : 'http://hellogk.tistory.com'
+            //https/http 결정
+           ,secure : false
+});
+
+```
