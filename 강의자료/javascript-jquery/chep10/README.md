@@ -391,7 +391,7 @@
       </div>
       ```
 
-      ​
+      
 
    2. 필터 셀렉터
 
@@ -486,7 +486,7 @@
 
    - HTML
 
-     ```javascript
+     ```html
      <!-- 1. [attr] : 속성 표현식 -->
      <div id="">DIV 태그, id=""</div>
      <div class="">DIV 태그, class=""</div>
