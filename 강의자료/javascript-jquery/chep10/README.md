@@ -486,7 +486,7 @@
 
    - HTML
 
-     ```html
+     ```javascript
      <!-- 1. [attr] : 속성 표현식 -->
      <div id="">DIV 태그, id=""</div>
      <div class="">DIV 태그, class=""</div>
@@ -541,7 +541,7 @@
 
       - HTML
 
-      ```html
+      ```javascript
       <div class="class_one">DIV 태그, class="class_one"</div> 
       <div class="class_two">DIV 태그, class="class_two"</div>
       <div class="class_thr">DIV 태그, class="class_thr"</div>
@@ -565,7 +565,7 @@
 
       -  HTML
 
-      ```html
+      ```javascript
       <input type="text" value="INPUT 태그, :text">
       <input type="text" value="INPUT 태그, :disabled" disabled>
       <input type="password" value="INPUT 태그, :password">
@@ -643,7 +643,7 @@
 
       - HTML
 
-      ```html
+      ```javascript
       <h1>Filter Selector Examples</h1>
       <h2 style="display:none">숨겨진 H2 태그</h2>
       <ul>
