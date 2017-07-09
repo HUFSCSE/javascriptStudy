@@ -448,7 +448,7 @@
 
         라디오, 체크박스, select 태그의 체크 상태를 판단하는 표현식.
 
-        :checked 와 :selected의 상태를 모두 포함하기 때문에 <select> 태그에서만 동작하려면 :selected 표현식을 사용해야 한다.
+        :checked 와 :selected의 상태를 모두 포함하기 때문에 select 태그에서만 동작하려면 :selected 표현식을 사용해야 한다.
 
       - HTML_2
 
