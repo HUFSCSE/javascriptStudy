@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boolean</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <strong> strong tag : 1</strong>
+    <em> em tag : 1</em>
+    <div> div tag : 1</div>
+    <p> p tag : 1 </p>
+    <div> div tag :2</div>
+    <div style="height: 18px;"> div tag :2 , height : 18px</div>
+    <p> p tag 2 <strong> strong tag : 2</strong></p>
+    <div> div tag : 3</div>
+    <p> p tag : 3</p>
+</div>
+<script>
+    function resultSelector( selector, lineColor){
+        if( !lineColor ) lineColor = "red";
+        selector.css({ outline : "3px solid " + lineColor});
+    }
+
+</script>
+</body>
+</html>

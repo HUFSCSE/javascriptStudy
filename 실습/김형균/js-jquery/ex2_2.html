@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 실습 영역 -->
+    <div style="margin:10px">
+        <a href="#">A 태그</a>
+        <p class="first tag">P 태그 class="first"</p>
+        <a href="#">A 태그</a>
+        <p>
+            <a href="#">P 태그, A 태그</a>
+        </p>
+        <p class="tag">
+            <a href="#">P 태그, A 태그</a>
+        </p>
+        <span>SPAN 태그</span><br>
+        <a href="#">A 태그</a>
+        <p id="last">P 태그, id="last"</p>
+    </div>
+
+<script>
+    $(".first, span").css({ outline : "3px solid red"});
+</script>
+</body>
+</html>

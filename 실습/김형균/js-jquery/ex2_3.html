@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Boolean</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body id="boolean">
+
+<div id="result" style="display: none; margin-top: 100px">
+    <div class="boolean" style="display: none">
+        <p><strong> * Boolean 결과 값</strong></p>
+        <div class="true" style="color: #fff; background: blue">TRUE</div>
+        <div class="false" style="color: #fff; background: red">FALSE</div>
+    </div>
+</div>
+
+<script>
+    function resultBoolean( target ) {
+        var $result = $("#result");
+        $result.show().find(".boolean").show();
+
+        if( target ){
+            $result.find(".boolean .false").hide();
+        } else {
+            $result.find(".boolean .true").hide();
+        }
+    }
+    console.log($("body").is("#boolean"));
+    resultBoolean( $("body").is("#boolean"));
+</script>
+</body>
+</html>
