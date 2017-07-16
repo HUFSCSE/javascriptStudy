@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="root_wrap" style="position: relative">
+    <div id="root">
+        <p id="first">P tag : 1 #first</p>
+        <p>P tag : 2</p>
+        <p id="target"><a href="#"><b>P tag : 3 #target</b></a> </p>
+        <p>P tag : 4</p>
+        <p><b>P tag : 5</b></p>
+        <p id="last">P tag : 6 #last</p>
+    </div>
+</div>
+
+<script>
+    function resultSelector( selector, lineColor){
+        if( !lineColor ) lineColor = "red";
+        selector.css({ outline : "3px solid " + lineColor});
+    }
+</script>
+</body>
+</html>
