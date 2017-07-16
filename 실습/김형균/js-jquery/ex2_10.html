@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="class_one">DIV 태그, class="class_one"</div>
+<div class="classone">DIV 태그, class="class one"</div>
+<div class="one_class">DIV 태그, class="one_class"</div>
+<div class="oneclass">DIV 태그, class="oneclass"</div>
+<div class="one-class_one">DIV 태그, class="one-class_one"</div>
+<div class="oneclassone">DIV 태그, class="oneclassone"</div>
+
+<script>
+    function resultSelector( selector, lineColor){
+        if( !lineColor ) lineColor = "red";
+        selector.css({ outline : "3px solid " + lineColor});
+    }
+
+</script>
+</body>
+</html>

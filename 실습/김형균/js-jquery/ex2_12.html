@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+<form id="f1">
+<input type="text" value="INPUT 태그, :text">
+<input type="text" value="INPUT 태그, :disabled" disabled>
+<input type="password" value="INPUT 태그, :password">
+<input type="image" src="image.jpg">
+<input type="file">
+<input type="checkbox">
+<input type="checkbox" checked>
+<input type="radio">
+<input type="radio" checked>
+<select>
+    <option>SELECT 태그, 가</option>
+    <option>SELECT 태그, 나</option>
+</select>
+<input type="button" value="INPUT 태그, :button">
+<button type="reset">BUTTON 태그, :reset</button>
+<button type="submit">BUTTON 태그, :submit</button>
+</form>
+
+<form id="f2">
+    <input type="text" value="INPUT 태그, :text">
+    <input type="text" value="INPUT 태그, :disabled" disabled>
+    <input type="password" value="INPUT 태그, :password">
+    <input type="image" src="image.jpg">
+    <input type="file">
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="radio">
+    <input type="radio" checked>
+    <select>
+        <option>SELECT 태그, 가</option>
+        <option>SELECT 태그, 나</option>
+    </select>
+    <input type="button" value="INPUT 태그, :button">
+    <button type="reset">BUTTON 태그, :reset</button>
+    <button type="submit">BUTTON 태그, :submit</button>
+</form>
+
+<script>
+    function resultSelector( selector, lineColor){
+        if( !lineColor ) lineColor = "red";
+        selector.css({ outline : "3px solid " + lineColor});
+    }
+
+</script>
+</body>
+</html>

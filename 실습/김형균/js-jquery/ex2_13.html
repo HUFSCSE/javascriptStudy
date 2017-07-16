@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selector</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>Filter Selector Examples</h1>
+<h2 style="display:none">숨겨진 H2 태그</h2>
+<ul>
+    <li>LI 태그, #1</li>
+    <li>LI 태그, #2</li>
+    <li><strong>LI 태그, #3</strong></li>
+    <li><strong>LI 태그, #4</strong></li>
+    <li>LI 태그, #5</li>
+    <li>LI 태그, #6</li>
+    <li style="display: none">d
+    </li>
+</ul>
+<div style="position:absolute; top:250px; left:0; width:50px; height:50px"></div>
+
+<script>
+    function resultSelector( selector, lineColor){
+        if( !lineColor ) lineColor = "red";
+        selector.css({ outline : "3px solid " + lineColor});
+    }
+
+</script>
+</body>
+</html>
