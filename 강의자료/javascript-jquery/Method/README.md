@@ -8,55 +8,56 @@
 
       - 기본(Basic) 탐색 메서드
 
-      | 구분        | 메서드 작성 코드       |
-      | --------- | --------------- |
-      | children 메서드    | $(Selector).children() |
-      | closest 메서드    | $(Selector).closest() |
-      | find 메서드    | $(Selector).find() |
-      | next 메서드 | $(Selector).next()     |
-      | nextAll 메서드  | $(Selector).nextAll()      |
-      | nextUntil 메서드  | $(Selector).nextUntil()      |
-      | offsetParent 메서드   | $(Selector).offsetParent()       |
-      | parent 메서드  | $(Selector).parent()      |
-      | parents 메서드   | $(Selector).parents()       |
-      | parentsUntil 메서드  | $(Selector).parentsUntil()      |
-      | prev 메서드   | $(Selector).prev()       |
-      | prevAll 메서드  | $(Selector).prevAll()      |
-      | prevUntil 메서드   | $(Selector).prevUntil()       |
-      | siblings 메서드  | $(Selector).siblings()      |
-      
+
+| 구분        | 메서드 작성 코드       |
+| --------- | --------------- |
+| children 메서드    | $(Selector).children() |
+| closest 메서드    | $(Selector).closest() |
+| find 메서드    | $(Selector).find() |
+| next 메서드 | $(Selector).next()     |
+| nextAll 메서드  | $(Selector).nextAll()      |
+| nextUntil 메서드  | $(Selector).nextUntil()      |
+| offsetParent 메서드   | $(Selector).offsetParent()       |
+| parent 메서드  | $(Selector).parent()      |
+| parents 메서드   | $(Selector).parents()       |
+| parentsUntil 메서드  | $(Selector).parentsUntil()      |
+| prev 메서드   | $(Selector).prev()       |
+| prevAll 메서드  | $(Selector).prevAll()      |
+| prevUntil 메서드   | $(Selector).prevUntil()       |
+| siblings 메서드  | $(Selector).siblings()      |
+
       - 실습 코드
       
-      ```html
-      	<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		    <meta charset="UTF-8">
-		    <title>Selector</title>
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		</head>
-		<body>
-		
-		<div id="root_wrap" style="position: relative">
-		    <div id="root">
-		        <p id="first">P tag : 1 #first</p>
-		        <p>P tag : 2</p>
-		        <p id="target"><a href="#"><b>P tag : 3 #target</b></a> </p>
-		        <p>P tag : 4</p>
-		        <p><b>P tag : 5</b></p>
-		        <p id="last">P tag : 6 #last</p>
-		    </div>
-		</div>
-		
-		<script>
-		    function resultSelector( selector, lineColor){
-		        if( !lineColor ) lineColor = "red";
-		        selector.css({ outline : "3px solid " + lineColor});
-		    }
-		</script>
-		</body>
-		</html>
-      ```
+```html
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Selector</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	<body>
+
+	<div id="root_wrap" style="position: relative">
+	    <div id="root">
+		<p id="first">P tag : 1 #first</p>
+		<p>P tag : 2</p>
+		<p id="target"><a href="#"><b>P tag : 3 #target</b></a> </p>
+		<p>P tag : 4</p>
+		<p><b>P tag : 5</b></p>
+		<p id="last">P tag : 6 #last</p>
+	    </div>
+	</div>
+
+	<script>
+	    function resultSelector( selector, lineColor){
+		if( !lineColor ) lineColor = "red";
+		selector.css({ outline : "3px solid " + lineColor});
+	    }
+	</script>
+	</body>
+	</html>
+```
 
 
       	- children Method
@@ -124,12 +125,12 @@
 
       - 그 외(Miscellaneous) 탐색 메서드
 
-      | 구분        | 메서드 작성 코드       |
-      | --------- | --------------- |
-      | add 메서드    | $(Selector).add() |
-      | addBack 메서드    | $(Selector).addBack() |
-      | contents 메서드    | $(Selector).contents() |
-      | end 메서드 | $(Selector).end()     |
+| 구분        | 메서드 작성 코드       |
+| --------- | --------------- |
+| add 메서드    | $(Selector).add() |
+| addBack 메서드    | $(Selector).addBack() |
+| contents 메서드    | $(Selector).contents() |
+| end 메서드 | $(Selector).end()     |
 
       	- add Method
 
@@ -151,62 +152,62 @@
 
       - 필터(Filter) 메서드
 
-      | 구분        | 메서드 작성 코드       |
-      | --------- | --------------- |
-      | filter 메서드    | $(Selector).filter() |
-      | eq 메서드    | $(Selector).eq() |
-      | first 메서드    | $(Selector).first() |
-      | last 메서드 | $(Selector).last()     |
-      | slice 메서드  | $(Selector).slice()      |
-      | map 메서드  | $(Selector).map()      |
-      | has 메서드   | $(Selector).has()       |
-      | is 메서드  | $(Selector).is()      |
-      | not 메서드   | $(Selector).not()       |
+| 구분        | 메서드 작성 코드       |
+| --------- | --------------- |
+| filter 메서드    | $(Selector).filter() |
+| eq 메서드    | $(Selector).eq() |
+| first 메서드    | $(Selector).first() |
+| last 메서드 | $(Selector).last()     |
+| slice 메서드  | $(Selector).slice()      |
+| map 메서드  | $(Selector).map()      |
+| has 메서드   | $(Selector).has()       |
+| is 메서드  | $(Selector).is()      |
+| not 메서드   | $(Selector).not()       |
       
       - 실습 코드
-      
-      ```html
-      	<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		    <meta charset="UTF-8">
-		    <title>Selector</title>
-		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		</head>
-		<body>
-		
-		<div id="root_wrap" style="position: relative">
-		    <div id="root">
-		        <p id="first">P tag : 1 #first</p>
-		        <p>P tag : 2</p>
-		        <p id="target"><a href="#"><b>P tag : 3 #target</b></a> </p>
-		        <p>P tag : 4</p>
-		        <p><b>P tag : 5</b></p>
-		        <p id="last">P tag : 6 #last</p>
-		    </div>
-		</div>
-		
-		<div id="result" style="display: none; margin-top: 100px">
-		    <div class="text" style="display: none;">
-		        <p><strong>* Text 결과값</strong></p>
-		        <p class="description"></p>
-		    </div>
-		    <div class="boolean" style="display: none;">
-		        <p><strong>* Boolean 결과값</strong></p>
-		        <div class="true" style="color:#fff;background: blue">TRUE</div>
-		        <div class="false" style="color:#fff;background: red">FALSE</div>
-		    </div>
-		</div>
-		
-		<script>
-		    function resultSelector( selector, lineColor){
-		        if( !lineColor ) lineColor = "red";
-		        selector.css({ outline : "3px solid " + lineColor});
-		    }
-		</script>
-		</body>
-		</html>
-      ```
+
+```html
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Selector</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	</head>
+	<body>
+
+	<div id="root_wrap" style="position: relative">
+	    <div id="root">
+		<p id="first">P tag : 1 #first</p>
+		<p>P tag : 2</p>
+		<p id="target"><a href="#"><b>P tag : 3 #target</b></a> </p>
+		<p>P tag : 4</p>
+		<p><b>P tag : 5</b></p>
+		<p id="last">P tag : 6 #last</p>
+	    </div>
+	</div>
+
+	<div id="result" style="display: none; margin-top: 100px">
+	    <div class="text" style="display: none;">
+		<p><strong>* Text 결과값</strong></p>
+		<p class="description"></p>
+	    </div>
+	    <div class="boolean" style="display: none;">
+		<p><strong>* Boolean 결과값</strong></p>
+		<div class="true" style="color:#fff;background: blue">TRUE</div>
+		<div class="false" style="color:#fff;background: red">FALSE</div>
+	    </div>
+	</div>
+
+	<script>
+	    function resultSelector( selector, lineColor){
+		if( !lineColor ) lineColor = "red";
+		selector.css({ outline : "3px solid " + lineColor});
+	    }
+	</script>
+	</body>
+	</html>
+```
 
 
       	- filter Method
