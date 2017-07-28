@@ -42,7 +42,8 @@
 * 싱글톤 객체로 인스턴스가 하나만 존재합니다.
 
 ### 예제
-#### 기본
+#### 기본 - 1
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -104,7 +105,26 @@
  	});
 ```
 
-### 필터
+#### 기본 - 2
+```html
+<body ng-app="app" ng-controller="MainCtrl">
+  What's your name?:
+  <input type="text" ng-model="user.name" />
+  <button ng-click="greet()">Click here!</button>
+  <h3>{{ message }}</h3>
+</body>
+```
+```javascript
+var app = angular.module('app', []);
+
+app.controller('MainCtrl', function($scope) {
+  $scope.greet = function() {
+    $scope.message = "Hello, " + $scope.user.name;
+  }
+});
+```
+
+#### 필터
 ```html
 <div ng-app="myApp">
     <div ng-controller="MainCtrl">
