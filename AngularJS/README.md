@@ -41,7 +41,8 @@
 * 특정 기능을 담당하는 객체
 * 싱글톤 객체로 인스턴스가 하나만 존재합니다.
 
-### 초간단예제
+### 예제
+#### 기본
 ```html
 <!DOCTYPE html>
 <html>
@@ -102,3 +103,40 @@
  		
  	});
 ```
+
+### 필터
+```html
+<div ng-app="myApp">
+    <div ng-controller="MainCtrl">
+        <p>No filter: {{ greeting }}</p>
+        <p>Reverse: {{ greeting | reverse }}</p>
+    </div>
+</div>
+```
+```javascript
+var myApp = angular.module('myApp', []);
+
+myApp.filter('reverse', function () {
+    return function (input, uppercase) {
+        var out = "";
+
+        for (var i = 0; i < input.length; i++) {
+            out = input.charAt(i) + out;
+        }
+
+        if (uppercase) {
+            out = out.toUpperCase();
+        }
+        return out;
+    }
+});
+
+// Controller included to supply data
+myApp.controller('MainCtrl', ['$scope', function ($scope) {
+
+    $scope.greeting = 'Todd Motto';
+
+}]);
+```
+
+FrontEnd 코드도 BackEnd 코드처럼 좀 체계적인 맛(?)으로 개발할 수 있는 장점이 있습니다.
