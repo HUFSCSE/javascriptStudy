@@ -17,7 +17,7 @@
 
 1. Selector 1단계
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -47,7 +47,7 @@
 
 2. Selector 2단계
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -79,7 +79,7 @@
 
 3. Boolean
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -128,7 +128,7 @@
 
 4. Text
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -180,7 +180,7 @@
 
 5. Value
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -234,7 +234,7 @@
 
 6. HTML
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -299,7 +299,7 @@
 
 7. Array
 
-   ```javascript
+   ```html
    <!doctype html>
    <html lang="ko">
    <head>
@@ -377,7 +377,7 @@
 
       - HTML
 
-      ```javascript
+      ```html
       <!-- 실습 영역 -->
       <div style="margin:10px">
       	<a href="#">A 태그</a>
@@ -431,7 +431,7 @@
 
       - HTML_1
 
-      ```javascript
+      ```html
       <div>
       		<strong>STRONG 태그 : 1</strong>
       		<em>EM 태그 : 1</em>
@@ -452,7 +452,7 @@
 
       - HTML_2
 
-      ```javascript
+      ```html
       <div>
       		<a href="#target" id="click">A 태그 : 1, href="#target" id="click"</a>
       		<p id="target" tabIndex="1">P 태그 : 1, id="target"</p>
@@ -486,7 +486,7 @@
 
    - HTML
 
-     ```javascript
+     ```html
      <!-- 1. [attr] : 속성 표현식 -->
      <div id="">DIV 태그, id=""</div>
      <div class="">DIV 태그, class=""</div>
@@ -541,7 +541,7 @@
 
       - HTML
 
-      ```javascript
+      ```html
       <div class="class_one">DIV 태그, class="class_one"</div> 
       <div class="class_two">DIV 태그, class="class_two"</div>
       <div class="class_thr">DIV 태그, class="class_thr"</div>
@@ -565,7 +565,7 @@
 
       -  HTML
 
-      ```javascript
+      ```html
       <input type="text" value="INPUT 태그, :text">
       <input type="text" value="INPUT 태그, :disabled" disabled>
       <input type="password" value="INPUT 태그, :password">
@@ -643,7 +643,7 @@
 
       - HTML
 
-      ```javascript
+      ```html
       <h1>Filter Selector Examples</h1>
       <h2 style="display:none">숨겨진 H2 태그</h2>
       <ul>
