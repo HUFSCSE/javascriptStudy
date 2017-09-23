@@ -1,0 +1,736 @@
+# 04-4 이펙트 메서드
+* 문서에 애니메이션 요소를 쉽게 적용할 수 있도록 미리 기능을 정의해 놓은 메서드 <br>
+* 애니메이션을 자유롭게 구성할 수 있게 기능 구현에 대한 자유도를 부여해 더욱 다양한 시각적 효과를 가능하게 도와주는 기능
+
+<br>
+
+## 1) 시각적 메서드
+
+|        구분         |        메서드 작성 코드         |
+| :---------------: | :----------------------: |
+| 1) show 메서드  | $(Selector).show()  |
+| 2) hide 메서드  | $(Selector).hide()  |
+| 3) toggle 메서드 | $(Selector).toggle() |
+
+<br>
+
+### 01. show 메서드
+* 해당 셀렉터(selector)를 시각적으로 보일 수 있는 상태로 만듬 <br>
+* toggle(true) 와 같음
+
+<br>
+
+```
+<style>
+#show {
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+#hide {
+    display:none;
+    width:50px;
+    height:50px;
+    background:#000;
+}
+</style>
+
+<button type="button">.show()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").show();
+});
+</script>
+```
+
+<br>
+
+### 02. hide 메서드
+* 해당 셀렉터(selector)를 시각적으로 보이지 않는 상태로 만듬 <br>
+* toggle(false) 와 같음
+
+<br>
+
+```
+<button type="button">.hide()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").hide();
+});
+</script>
+```
+
+<br>
+
+### 03. toggle 메서드
+* 해당 셀렉터(selector)를 시각적으로 보이는 상태와 보이지 않는 상태로 번갈아 변화시킴
+
+<br>
+
+```
+<button type="button">.toggle()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").toggle();
+});
+</script>
+```
+
+<br>
+
+## 2) 페이드 메서드
+
+|         구분          |        메서드 작성 코드         |
+| :-------------------: | :--------------------------: |
+| 1) fadeIn 메서드  | $(Selector).fadeIn()  |
+| 2) fadeOut 메서드  | $(Selector).fadeOut()  |
+| 3) fadeToggle 메서드 | $(Selector).fadeToggle() |
+| 4) fadeTo 메서드 | $(Selector).fadeTo() |
+
+<br>
+
+### 01. fadeIn 메서드
+* show()메서드와 유사한 기능을 가졌지만 투명도를 조정해서 해당 셀렉터를 시각적으로 보일 수 있는 상태로 만듬 <br>
+* fadeIn()메서드는 0에서 1로 향하는 투명도로 작동 <br>
+* fadeToggle(true) 와 같음
+
+<br>
+
+```
+<style>
+#show {
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+#hide {
+    display:none;
+    width:50px;
+    height:50px;
+    background:#000;
+}
+</style>
+
+<button type="button">.fadeIn()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").fadeIn();
+});
+</script>
+```
+
+<br>
+
+> fadeIn(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> fadeIn(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.fadeIn()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").fadeIn(2500,function(){
+        resultText(".fadeIn 완료되었습니다.");
+    });
+});
+</script>
+```
+
+<br>
+
+### 02. fadeOut 메서드
+* 투명도를 조정해서 해당 셀렉터(selector)를 시각적으로 보이지 않는 상태로 만듬 <br>
+* fadeIn()메서드와 반대 기능이며 1에서 0으로 향하는 투명도로 작동 <br>
+* fadeToggle(false) 와 같음
+
+<br>
+
+```
+<button type="button">.fadeOut()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").fadeOut());
+});
+</script>
+```
+
+<br>
+
+> fadeOut(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> fadeOut(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.fadeOut()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").fadeOut(2500,function(){
+        resultText(".fadeOut 완료되었습니다.");
+    });
+});
+</script>
+```
+
+<br>
+
+### 03. fadeToggle 메서드
+* 현재의 시각적인 상태를 고려해서 애니메이션의 상태를 눈에 보이거나 보이지 않는 상태로 바꿈
+
+<br>
+
+```
+<button type="button">.fadeToggle()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").fadeToggle());
+});
+</script>
+```
+
+<br>
+
+> fadeToggle(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> fadeToggle(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.fadeToggle()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").fadeToggle(2500,function(){
+        resultText(".fadeToggle 완료되었습니다.");
+    });
+});
+</script>
+```
+
+### 04. fadeTo 메서드
+* 해당 셀렉터(selector)를 목표로 설정한 투명도 상태로 만듬
+
+<br>
+
+```
+<button type="button">.fadeTo()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").fadeTo(2500,"0.5",function(){
+        resultText(".fadeTo(opacity 0.5) 완료되었습니다");
+    });
+});
+</script>
+```
+
+<br>
+
+## 3) 슬라이드 메서드
+
+|         구분          |        메서드 작성 코드         |
+| :-------------------: | :--------------------------: |
+| 1) slideDown 메서드  | $(Selector).slideDown()  |
+| 2) slideUp 메서드  | $(Selector).slideUp()  |
+| 3) slideToggle 메서드 | $(Selector).slideToggle() |
+
+<br>
+
+### 01. slideDown 메서드
+* show와 fadeIn은 투명도를 통해서 보일 수 있는 상태로 만들었는데 slideDown은 높이값을 통해 눈에 보이는 형태로 나타냄 <br>
+* slideToggle(true) 와 같음
+
+<br>
+
+```
+<style>
+#show {
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+#hide {
+    display:none;
+    width:50px;
+    height:50px;
+    background:#000;
+}
+</style>
+
+<button type="button">.slideDown()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").slideDown();
+});
+</script>
+```
+
+<br>
+
+> slideDown(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> slideDown(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.slideDown()테스트하기</button>
+<div id="hide"></div>
+
+<script>
+$("button").click(function(){
+    $("#hide").slideDown(2500,function(){
+        resultText(".slideDown 완료되었습니다.");
+    });
+});
+</script>
+```
+
+<br>
+
+### 02. slideUp 메서드
+* 높이값을 조정해서 해당 셀렉터(selector)를 시각적으로 보이지 않는 상태로 만듬 <br>
+* slideToggle(flase) 와 같음
+
+<br>
+
+```
+<button type="button">.slideUp()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").slideUp();
+});
+</script>
+```
+
+<br>
+
+> slideUp(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> slideUp(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.slideUp()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").slideUp(2500,function(){
+        resultText(".slideUp 완료되었습니다.");
+    });
+});
+</script>
+```
+
+<br>
+
+### 03. slideToggle 메서드
+* 높이값 상태를 고려해 눈에 보이거나 보이지 않는 상태로 만듬
+
+<br>
+
+```
+<button type="button">.slideToggle()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").slideToggle();
+});
+</script>
+```
+
+<br>
+
+> slideToggle(duration) : 실행시간 설정 <br>
+> 기본값은 400 (0.4초) 이지만 인자(argument)값을 교체해서 실행시간 설정이 가능
+
+<br>
+
+> slideToggle(duration, callback) : 실행시간과 실행함수를 설정 <br>
+> 설정한 실행시간에 맞춰 진행하다가 종료 후 정의한 함수 실행
+
+<br>
+
+```
+<button type="button">.slideToggle()테스트하기</button>
+<div id="show"></div>
+
+<script>
+$("button").click(function(){
+    $("#show").slideToggle(2500,function(){
+        resultText(".slideToggle 완료되었습니다.");
+    });
+});
+</script>
+```
+
+<br>
+
+## 4) 애니메이션 조작 메서드
+
+|         구분          |        메서드 작성 코드         |
+| :-------------------: | :--------------------------: |
+| 1) queue 메서드  | $(Selector).queue()  |
+| 2) dequeue 메서드  | $(Selector).dequeue()  |
+| 3) clearQueue 메서드 | $(Selector).clearQueue() |
+| 4) finish 메서드 | $(Selector).finish() |
+
+<br>
+
+### 01. queue 메서드
+* 해당 셀렉터(selector)에 메서드를 등록해 연속 호출
+
+<br>
+
+```
+<style>
+#box {
+    position:absolute;
+    top:50px;
+    left:0px;
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+</style>
+
+<button type="button">애니메이션 테스트</button>
+<div id="box"></div>
+
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("#box").queue(function(){
+        resultText("등록한 큐가 실행되었습니다");
+    })
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+    resultText("id='box'가 제자리로 돌아왔습니다");
+}
+});
+</script>
+```
+
+<br>
+
+### 02. dequeue 메서드
+* 해당 셀렉터(selector)에 등록된 다음 메서드 호출 <br>
+* queue 메서드로 호출한 다음에는 dequeue 메서드를 실행해서 다음 메서드가 이어서 호출되게 함
+
+<br>
+
+```
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("#box").queue(function(){
+        resultText("등록한 큐가 실행되었습니다");
+        $("#box").dequeue();
+    })
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+    resultText("id='box'가 제자리로 돌아왔습니다");
+}
+});
+</script>
+```
+
+<br>
+
+### 03. clearQueue 메서드
+* 등록된 모든 메서드를 삭제함 <br>
+* stop()과 같음
+
+<br>
+
+
+```
+<script>
+$("button").click(function(){
+$("#box").clearQueue();
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("#box").queue(function(){
+        resultText("등록한 큐가 실행되었습니다");
+        $("#box").dequeue();
+    })
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+    resultText("id='box'가 제자리로 돌아왔습니다");
+}
+});
+</script>
+```
+
+<br>
+
+### 04. finish 메서드
+* 현재 작동하고 있는 큐의 메서드를 생략한 후 바로 종료시키고 최종적으로 등록한 메서드로 건너뜀 <br>
+* stop(false)와 같음
+
+<br>
+
+```
+<script>
+$("button").click(function(){
+$("#box").finish();
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("#box").queue(function(){
+        resultText("등록한 큐가 실행되었습니다");
+        $("#box").dequeue();
+    })
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+    resultText("id='box'가 제자리로 돌아왔습니다");
+}
+});
+</script>
+```
+
+<br>
+
+## 5) 애니메이션 기본 메서드
+
+|         구분          |        메서드 작성 코드         |
+| :-------------------: | :--------------------------: |
+| 1) animate 메서드  | $(Selector).animate()  |
+| 2) stop 메서드  | $(Selector).stop()  |
+| 3) delay 메서드 | $(Selector).delay() |
+
+<br>
+
+### 01. animate 메서드
+* css속성을 토대로 사용자의 편의에 맞게 애니메이션 움직임을 정의
+
+<br>
+
+```
+<style>
+#box {
+    position:absolute;
+    top:50px;
+    left:0px;
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+</style>
+
+<button type="button">애니메이션 적용테스트</button>
+<div id="box"></div>
+
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+});
+</script>
+```
+
+<br>
+
+### 02. stop 메서드
+* 애니메이션 효과를 중간에 멈춤 <br>
+* stop() 메서드 인자에는 불린(boolean, true/false) 값으로 설정할 수 있고, 기본값은 'false' <br>
+* stop()은 clearQueue로 queue에 등록된 메서드를모두 삭제 <br>
+* stop(false)는 jumpToEnd로 현재 작동하는 움직임이 완료되었을때 모습을 보이며 finish() 메서드와 같음
+
+<br>
+
+```
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").stop().animate({left:$(window).width() - 50});
+    $("button").addClass("action");
+}else{
+    $("#box").stop().animate({left:0});
+    $("button").removeClass("action");
+}
+});
+</script>
+```
+
+<br>
+
+```
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").stop(true/false).animate({left:$(window).width() - 50});
+    $("button").addClass("action");
+}else{
+    $("#box").stop(true/false).animate({left:0});
+    $("button").removeClass("action");
+}
+});
+</script>
+```
+
+<br>
+
+### 03. delay 메서드
+* 애니메이션 순서 사이에 시간 간격을 설정함
+
+<br>
+
+```
+<script>
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box")
+        .animate({left:$(window).width() - 50})
+        .delay(2000)
+        .animate({left:0});
+    $("button").addClass("action");
+}else{
+    $("#box")
+        .animate({left:0})
+        .delay(2000)
+        .animate({left:$(window).width() - 50});
+    $("button").removeClass("action");
+}
+});
+</script>
+```
+
+<br>
+
+## 6) 애니메이션 속성
+
+|              구분              |        메서드 작성 코드         |
+| :---------------------------: | :--------------------------: |
+| 1) 시간간격 조정속성            | $.fx.interval  |
+| 2) 작동상태 조정속성            | $.fx.off  |
+| 3) 속도효과 라이브러리 속성      | $.easing.def |
+
+<br>
+
+### 01. 시간간격 조정속성
+* 애니메이션이 발생하는 시간 간격 조정 <br>
+* 15밀리세컨드가 기본값인데 기존값 그대로 사용하는것이 좋음
+
+<br>
+
+```
+<style>
+#box {
+    position:absolute;
+    top:50px;
+    left:0px;
+    width:50px;
+    height:50px;
+    background:#000;
+    }
+</style>
+
+<button type="button">애니메이션 적용테스트</button>
+<div id="box"></div>
+
+<script>
+$.fx.interval = 100;
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+}
+});
+</script>
+```
+
+<br>
+
+### 02. 작동 상태 조정 속성
+* 애니메이션 효과를 중간에 멈춤 
+
+<br>
+
+```
+<script>
+$.fx.off = true;
+$("button").click(function(){
+if(!$("button").hasClass("action")){
+    $("#box").animate({left:$(window).width() - 50});
+    $("button").addClass("action");
+}else{
+    $("#box").animate({left:0});
+    $("button").removeClass("action");
+}
+});
+</script>
+```
+
+<br>
+
+### 03. 속도 효과 라이브러리 속성
+* 제이쿼리 플러그인 파일을 추가로 실행하여 다양한 속도효과 구현 <br>
+* jquery.easing 홈페이지 (http://gsgd.co.uk/sandbox/jquery/easing/)에 방문하여 파일을 내려받고 코드 추가
+
+<br>
